@@ -34,6 +34,7 @@ Variables to be visualized:
 *	Restrictions by risk type [high, medium, low]
 *	Duration of registration [5 yr, 10 yr, 15 yr]
 
+![Alt text](thesis/visualization/nationalLevelPrototype.jpg?raw=true "National Level Prototype")
 
 Data Sources:
 * https://www.parentsformeganslaw.org/public/meganReportCard.html
