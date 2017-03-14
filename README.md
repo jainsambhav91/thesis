@@ -34,6 +34,7 @@ Variables to be visualized:
 *	Restrictions by risk type [high, medium, low]
 *	Duration of registration [5 yr, 10 yr, 15 yr]
 
+prototype:
 ![Alt text](visualization/nationalLevelPrototype.jpg?raw=true "National Level Prototype")
 
 Data Sources:
@@ -59,6 +60,8 @@ Distribution by:
 *	Victim Age
 *	Type of Crime
 
+
+prototype
 ![Alt text](visualization/stateLevelPrototype.png?raw=true "State Level Prototype")
 
 Data Sources:
@@ -91,6 +94,8 @@ Understanding the impact of collateral consequences: _Chicago_
   * Mapping schools, day care centers and public parks parcel data with 500 ft buffers
   * Mapping Hospitals and healthcare facilities parcel data and analysing the ones that fall under safety zones to understand inaccessability.
 
+
+prototype:
 ![Alt text](visualization/cityLevelPrototype.png?raw=true "City Level Prototype")
 
 Data Sources: https://datahub.cmap.illinois.gov/
