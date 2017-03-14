@@ -11,3 +11,24 @@ I am hoping that this work will compell the user to look at a sensitive topic, s
 
 ___
 
+
+### Storyboard
+
+National Level: 
+Understanding the sex offender registry laws, their history, inception and implementation across different states
+-	What are sex offender registry Laws?
+-	How are these laws implemented across different states?
+o	Who is required to register?
+o	For how long?
+o	How are sex offenders categorized?
+o	What restrictions are imposed?
+♣	Residency restrictions
+♣	Mobility restrictions
+
+Variables to be visualized:
+-	Safety zones [schools, parks, day care centers]
+-	Buffer area [500 ft, 1000 ft, 1500 ft, 2000 ft, 2500 ft]
+-	Presence restrictions, Work restrictions
+-	Restrictions by risk type [high, medium, low]
+-	Duration of registration [5 yr, 10 yr, 15 yr]
+-	Number of sex offenders by state [link: https://www.parentsformeganslaw.org/public/meganReportCard.html]
