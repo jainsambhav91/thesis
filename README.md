@@ -1,2 +1,6 @@
-# thesis
-thesis work - major studio II
+# Visualizing Law
+### Understanding the sex offender registry laws and their collateral consequences
+
+This thesis is about the visual exploration of the sex offender registry laws and an attempt to understand how examining these laws from an objective lens can debunk myths about society. Moreover, it also tries to explore the collateral consequences that these laws have, specifically the residence restrictions that it imposes on the offenders, and raises questions about the effectiveness of their intentions.
+
+I have chosen the sex offender registry laws as my topic of research because at times when we are dealing with issues that are sensitive, such as this one, we fail to look at the complete picture before we form opinions and take actions. I believe this analysis will produce some unexpected answers to questions like: Who is required to register in the sex offender registry? For how long? Do they have a high risk of reoffending? Are all victims under eighteen? What proportion of sex offenders are juveniles, what proportion are women? How are residence restrictions imposed on offenders? What proportion of a city is inaccessible to them as a result of these restrictions? Are these restrictions effective in regards to what the intend to achieve? 
