@@ -61,7 +61,9 @@ Distribution by:
 *	Type of Crime
 
 
-prototype
+
+
+prototype:
 ![Alt text](visualization/stateLevelPrototype.png?raw=true "State Level Prototype")
 
 Data Sources:
@@ -95,7 +97,10 @@ Understanding the impact of collateral consequences: _Chicago_
   * Mapping Hospitals and healthcare facilities parcel data and analysing the ones that fall under safety zones to understand inaccessability.
 
 
+
+
 prototype:
+
 ![Alt text](visualization/cityLevelPrototype.png?raw=true "City Level Prototype")
 
 Data Sources: https://datahub.cmap.illinois.gov/
