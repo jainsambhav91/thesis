@@ -59,6 +59,7 @@ Distribution by:
 *	Victim Age
 *	Type of Crime
 
+![Alt text](visualization/stateLevelPrototype.jpg?raw=true "State Level Prototype")
 
 Data Sources:
 * https://www.isp.state.il.us/sor/
@@ -89,6 +90,8 @@ Understanding the impact of collateral consequences: _Chicago_
 * To avoid the risk of not "loitering" around schools and public parks and violating the law, what other public ameneties become inaccessible to the registered offenders? 
   * Mapping schools, day care centers and public parks parcel data with 500 ft buffers
   * Mapping Hospitals and healthcare facilities parcel data and analysing the ones that fall under safety zones to understand inaccessability.
+
+![Alt text](visualization/cityLevelPrototype.jpg?raw=true "City Level Prototype")
 
 Data Sources: https://datahub.cmap.illinois.gov/
 
