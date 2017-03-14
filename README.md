@@ -18,12 +18,12 @@ National Level:
 Understanding the sex offender registry laws, their history, inception and implementation across different states
 -	What are sex offender registry Laws?
 -	How are these laws implemented across different states?
-o	Who is required to register?
-o	For how long?
-o	How are sex offenders categorized?
-o	What restrictions are imposed?
-♣	Residency restrictions
-♣	Mobility restrictions
+..* Who is required to register?
+..*	For how long?
+..*	How are sex offenders categorized?
+..*	What restrictions are imposed?
+  ..*	Residency restrictions
+  ..*	Mobility restrictions
 
 Variables to be visualized:
 -	Safety zones [schools, parks, day care centers]
@@ -31,4 +31,4 @@ Variables to be visualized:
 -	Presence restrictions, Work restrictions
 -	Restrictions by risk type [high, medium, low]
 -	Duration of registration [5 yr, 10 yr, 15 yr]
--	Number of sex offenders by state [link: https://www.parentsformeganslaw.org/public/meganReportCard.html]
+-	Number of sex offenders by state - timeline [link: https://www.parentsformeganslaw.org/public/meganReportCard.html]
