@@ -7,3 +7,7 @@ I have chosen the sex offender registry laws as my topic of research because at 
 
 I will approach this project from three different stages. Starting at a macro level, visualizing these laws from the national viewpoint, trying to answer broader questions about their history, their inception, and presence across the country. I will then move to the state level, where narrower questions about the sex offender registry and their demographic make-up will be addressed. Finally, I would move to the district level, which will examine the impact of the collateral consequences in detail. 
 
+I am hoping that this work will compell the user to look at a sensitive topic, such as this one, from a different perspective, at the same time making them well informed and aware, rectifying myths and misconceptions along the way.
+
+___
+
