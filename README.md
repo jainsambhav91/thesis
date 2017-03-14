@@ -22,13 +22,20 @@ Understanding the sex offender registry laws, their history, inception and imple
   *	For how long?
   * How are sex offenders categorized?
   * What restrictions are imposed?
-  * Residency restrictions
-  * Mobility restrictions
+    * Residency restrictions
+    * Mobility restrictions
 
 Variables to be visualized:
--	Safety zones [schools, parks, day care centers]
--	Buffer area [500 ft, 1000 ft, 1500 ft, 2000 ft, 2500 ft]
--	Presence restrictions, Work restrictions
--	Restrictions by risk type [high, medium, low]
--	Duration of registration [5 yr, 10 yr, 15 yr]
--	Number of sex offenders by state - timeline [link: https://www.parentsformeganslaw.org/public/meganReportCard.html]
+*	Number of sex offenders by state - timeline
+*	Safety zones [schools, parks, day care centers]
+*	Buffer area [500 ft, 1000 ft, 1500 ft, 2000 ft, 2500 ft]
+*	Presence restrictions, Work restrictions
+*	Restrictions by risk type [high, medium, low]
+*	Duration of registration [5 yr, 10 yr, 15 yr]
+
+Data Sources:
+* https://www.parentsformeganslaw.org/public/meganReportCard.html
+* http://all4consolaws.org/wp-content/uploads/2017/01/Summary-of-State-Registration-Laws-Concerning-Short.pdf
+
+
+
