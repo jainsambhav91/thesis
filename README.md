@@ -14,7 +14,7 @@ ___
 
 ### Storyboard
 
-National Level: 
+#### National Level: 
 Understanding the sex offender registry laws, their history, inception and implementation across different states
 * What are sex offender registry Laws?
 * How are these laws implemented across different states?
@@ -25,6 +25,7 @@ Understanding the sex offender registry laws, their history, inception and imple
     * Residency restrictions
     * Mobility restrictions
 
+
 Variables to be visualized:
 *	Number of sex offenders by state - timeline
 *	Safety zones [schools, parks, day care centers]
@@ -33,9 +34,40 @@ Variables to be visualized:
 *	Restrictions by risk type [high, medium, low]
 *	Duration of registration [5 yr, 10 yr, 15 yr]
 
+
 Data Sources:
 * https://www.parentsformeganslaw.org/public/meganReportCard.html
 * http://all4consolaws.org/wp-content/uploads/2017/01/Summary-of-State-Registration-Laws-Concerning-Short.pdf
 
+
+
+#### State Level:
+Understanding the demographics of the registrants: _State of Illinois_
+*	What proportion of registered offenders are females?
+*	What proportion of registered offenders are juveniles?
+*	Which ethnicities have a higher chance of convictions?
+*	Are all victims children? What proportion are adults?
+*	How are offenders categorized by risk of re-offense?
+
+
+Variables to be visualized:
+Distribution by:
+*	Age
+*	Gender
+*	Ethnicity
+*	Victim Age
+*	Type of Crime
+
+
+Data Sources:
+* https://www.isp.state.il.us/sor/
+
+
+#### City Level
+Understanding the impact of collateral consequences: _Chicago_
+
+*	Residency restrictions: 
+  *	What proportion of the city is inaccessible to registered offenders to live and work?
+    * Mapping schools, day care centers and public parks with 500 ft buffers 
 
 
