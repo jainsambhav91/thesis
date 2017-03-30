@@ -101,7 +101,17 @@ Understanding the impact of collateral consequences: _Chicago_
 
 prototype:
 
-![Alt text](visualization/cityLevelPrototype.png?raw=true "City Level Prototype")
+![Alt text](visualization/cityLevel.jpg?raw=true "City Level Prototype")
 
 Data Sources: https://datahub.cmap.illinois.gov/
+
+
+
+### Other Ideas:
+
+Sex Offender Registry Laws: Timeline-
+![Alt text](visualization/cityLevel.jpg?raw=true "City Level Prototype")
+
+Mobility: Possible violations based on start and end point-
+![Alt text](visualization/cityLevel.jpg?raw=true "City Level Prototype")
 
