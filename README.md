@@ -107,11 +107,13 @@ Data Sources: https://datahub.cmap.illinois.gov/
 
 
 
+
+
 ### Other Ideas:
 
 Sex Offender Registry Laws: Timeline-
-![Alt text](visualization/cityLevel.jpg?raw=true "City Level Prototype")
+![Alt text](visualization/IMG_3538.JPG?raw=true "City Level Prototype")
 
 Mobility: Possible violations based on start and end point-
-![Alt text](visualization/cityLevel.jpg?raw=true "City Level Prototype")
+![Alt text](visualization/IMG_3539.JPG?raw=true "City Level Prototype")
 
