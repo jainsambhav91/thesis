@@ -1,4 +1,4 @@
-[Presentation - April 6 link](https://github.com/jainsambhav91/thesis/visualization/hi-fi mockups/Mockups_April6_v2.pdf.md)
+[Presentation - April 6 link](https://github.com/jainsambhav91/thesis/visualization/hi-fi mockups/Mockups_April6_v2.pdf)
 # Visualizing Law
 ### Understanding the sex offender registry laws and their collateral consequences
 
