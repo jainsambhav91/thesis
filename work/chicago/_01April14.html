@@ -41,7 +41,7 @@
     }
     
     #map2{
-        height: 500px;
+        height: 600px;
         width: 900px;
     }
     
@@ -53,8 +53,34 @@
     
     #geocoder-container > div {
     min-width:50%;
-    margin-left:25%;
-}
+    margin-left:50%;
+    }
+    
+    #firstGeoCoder{
+        margin: 10px 10px 0 0;
+        float: left;
+        opacity: 0.4;
+        /*border-color: white; */
+        background-color: gray;
+    }
+    
+    #secondGeoCoder{
+        margin: 200px 10px 0 0;
+        float: left;
+        opacity: 0.4;
+        /*border-color: white; */
+        background-color: gray;
+    }
+    
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+          color: white;
+    }
+    
+    #point1{
+        opacity: 0.1;
+    }
+
+
 </style>
 
 <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
@@ -65,9 +91,10 @@
 <script type="text/javascript" src="parks_april14_buffer_dissolved_epsg.js"></script>
 <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script> 
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.17.0/mapbox-gl-draw.css' type='text/css'/>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css' type='text/css' />
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
 
 <h2>Map 1: Residence and Employment Restrictions</h2>
 
@@ -84,11 +111,13 @@
 <div id='map2' onmouseup="recalculate()"></div>
 
 <script>
+
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiamFpbnNhbWJoYXYiLCJhIjoiY2l1aW5uOTZ5MDAwOTJvcGxrMWg4OHUxciJ9.X8mAbHJEKa78PHXfVRK5-Q';
 /* eslint-disable */
 var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/mapbox/satellite-v9', //hosted style id
+    style: 'mapbox://styles/jainsambhav/cj1pghgd300122sp73j3cxiej', //hosted style id
     center: [-87.623177, 41.881832], // starting position
     zoom: 10 // starting zoom
 });
@@ -223,25 +252,73 @@ function recalculate() {
 var calcButton = document.getElementById('calculate');
 
 
+// *******************************************************
+
+// -----------------    MAP 2 code:     ----------------- 
+
+// *******************************************************
+
+
+
+
 var map2 = new mapboxgl.Map({
     container: 'map2', // container id
-    style: 'mapbox://styles/mapbox/satellite-v9', //hosted style id
+    style: 'mapbox://styles/jainsambhav/cj1pghgd300122sp73j3cxiej', //hosted style id
     center: [-87.623177, 41.881832], // starting position
     zoom: 10 // starting zoom
 });
 
+
+
 var geocoder1 = new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken
+    accessToken: mapboxgl.accessToken,
+    flyTo: false
 });
 
 var source = 0;
 
 map2.addControl(geocoder1);
 
+
+var geocoder2 = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    flyTo: false
+});
+
+var destination = 0;
+
+var idCounter = 0;
+
+map2.addControl(geocoder2);
+
 // After the map style has loaded on the page, add a source layer and default
 // styling for a single point.
 map2.on('load', function() {
-    map2.addSource('single-point', {
+    
+    map2.addLayer({
+        'id': 'school',
+        'type': 'fill',
+        'source': {
+            'type': 'geojson',
+            'data': parksBuffer_epsg
+        },
+        'layout': {},
+        'paint': {
+            'fill-color': 'black',
+            'fill-opacity': 0.2
+        }
+    });
+    
+    
+    map2.addSource('single-point1', {
+        "type": "geojson",
+        "data": {
+            "type": "FeatureCollection",
+            "features": []
+        }
+    });
+    
+     map2.addSource('single-point2', {
         "type": "geojson",
         "data": {
             "type": "FeatureCollection",
@@ -251,8 +328,8 @@ map2.on('load', function() {
     
 
     map2.addLayer({
-        "id": "point",
-        "source": "single-point",
+        "id": "point1",
+        "source": "single-point1",
         "type": "circle",
         "paint": {
             "circle-radius": 10,
@@ -260,22 +337,147 @@ map2.on('load', function() {
         }
     });
     
+    map2.addLayer({
+        "id": "point2",
+        "source": "single-point2",
+        "type": "circle",
+        "paint": {
+            "circle-radius": 10,
+            "circle-color": "#007cbf"
+        }
+    });
    
 
     // Listen for the `geocoder.input` event that is triggered when a user
     // makes a selection and add a symbol that matches the result.
     geocoder1.on('result', function(ev) {
-        map2.getSource('single-point').setData(ev.result.geometry);
-        if(source != ev.result.geometry){
+        map2.getSource('single-point1').setData(ev.result.geometry);
             source = ev.result.geometry;
+            if(destination == 0){
+                map2.setCenter([source.coordinates[0], source.coordinates[1]]);
+            }
+            if(destination != 0){
+            idCounter++;    
             drawLine();
-        }
+            }
+        
+        // console.log(ev.result.geometry );
+    });
+    
+    geocoder2.on('result', function(ev) {
+        map2.getSource('single-point2').setData(ev.result.geometry);
+            destination = ev.result.geometry;
+            if(source != 0){
+            idCounter++;    
+            drawLine();
+            }
         // console.log(ev.result.geometry );
     });
     
 });
 
+
+$( "input" ).first().attr("placeholder", "Search Origin");
+$("input:eq( 1 )").attr("placeholder", "Search Destination");
+
+$(".mapboxgl-ctrl-geocoder.mapboxgl-ctrl").first().attr('id',   "firstGeoCoder")
+$(".mapboxgl-ctrl-geocoder.mapboxgl-ctrl:eq(1)").attr('id',   "secondGeoCoder")
+
+
 function drawLine(){
+    
+    map2.removeLayer("route" + (idCounter-1));
+    
+    
+    var lineData = {
+                "type": "Feature",
+                "properties": {},
+                "geometry": {
+                    "type": "LineString",
+                    "coordinates": [
+                        [source.coordinates[0], source.coordinates[1]],
+                        [destination.coordinates[0], destination.coordinates[1]],
+                        
+                    ]
+                }
+            }
+    
+    
+    map2.addLayer({
+        "id": "route" + idCounter,
+        "type": "line",
+        "source": {
+            "type": "geojson",
+            "data": lineData
+        },
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "#888",
+            "line-width": 0.5
+        }
+    });
+    
+    var coordinates = lineData.geometry.coordinates;
+    var bounds = coordinates.reduce(function(bounds, coord) {
+            return bounds.extend(coord);
+        }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
+
+        map2.fitBounds(bounds, {
+            padding: 20
+        });
+        
+        
+    var linesBuffer = turf.buffer(lineData, 10, 'feet');     
+    console.log(linesBuffer);
+    
+// count polygons intersecting the line
+
+var lineAreaConflict = [];
+
+    for (var i = 0; i < f2.length; i++) {
+            var parcel2 = f2[i];
+
+                    var conflict2 = turf.intersect(parcel2.geometry, linesBuffer.geometry);
+                    if (conflict2 != null) {
+                        lineAreaConflict.push(conflict2);
+                    }
+        }
+    
+    var intersectingRegions = turf.featureCollection(lineAreaConflict);    
+    console.log(intersectingRegions);  
+    
+    // var intersectingRegionsBuffer = turf.buffer(intersectingRegions, 1000, 'feet');
+    var f3 = intersectingRegions.features;
+    
+    var centroidPt = []
+    for(var i=0; i<f3[0].geometry.coordinates.length; i++){
+        centroidPt.push(turf.centroid(turf.polygon(f3[0].geometry.coordinates[i])).geometry.coordinates)
+        // centroidPt.push(turf.centroid(turf.polygon(f3[0].geometry.coordinates[i])));
+        // centroidPt.push(turf.centroid(f3[0].geometry.coordinates[i]));
+    }
+    // centroidPt = turf.centroid(intersectingRegions.features)
+    
+    var centroidPtFinal = turf.multiPoint(centroidPt);
+    // var intersectingRegionsDisplay = turf.buffer(intersectingRegions, 1000, 'feet');
+    // map2.removeLayer("sambhav");
+    if(!map2.getLayer("sambhav")){
+        map2.addLayer({
+            'id': 'sambhav',
+            'type': 'circle',
+            'source': {
+                'type': 'geojson',
+                'data': centroidPtFinal
+            },
+            'layout': {},
+            'paint': {
+                "circle-radius": 5,
+                "circle-color": "red"
+            }
+        });
+    }
     
 }
 
