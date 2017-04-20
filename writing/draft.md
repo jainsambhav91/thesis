@@ -22,7 +22,7 @@ Things to add:
 
 ### Introduction:
 
--	Elaborate Stories
+-	Elaborate 
 -	Individual stories
 
 * 1.1.	History and Inception of Current Sex Offender Laws:
