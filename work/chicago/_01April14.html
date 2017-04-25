@@ -100,15 +100,17 @@
 
 <div id='map' onmouseup="recalculate()"></div>
 
-<div class='calculation-box'>
-    <p>Draw a polygon using the draw tools.</p>
-    <div id='calculate' class='button button'>Calculate area</div>
-    <div id='calculated-area'></div>
-</div>
+<!--<div class='calculation-box'>-->
+<!--    <p>Draw a polygon using the draw tools.</p>-->
+<!--    <div id='calculate' class='button button'>Calculate area</div>-->
+<!--    <div id='calculated-area'></div>-->
+<!--</div>-->
 
 <h2>Map 2: Mobility and Presence Restrictions</h2>
 
-<div id='map2' onmouseup="recalculate()"></div>
+<div id='map2'></div>
+
+
 
 <script>
 
@@ -134,8 +136,8 @@ map.on('load', function () {
         },
         'layout': {},
         'paint': {
-            'fill-color': '#088',
-            'fill-opacity': 0.8
+            'fill-color': 'gray',
+            'fill-opacity': 0.1
         }
     });
 });
@@ -157,8 +159,8 @@ map.on('load', function () {
         },
         'layout': {},
         'paint': {
-            'fill-color': '#d9f442',
-            'fill-opacity': 0.5
+            'fill-color': '#ef2f56',
+            'fill-opacity': 0.8
         }
     });
 });

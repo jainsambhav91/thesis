@@ -118,7 +118,7 @@ svg.selectAll(".dot")
 		
 		$("button").on("click", function() {
 		
-			var duration = 600,
+			var duration = 250,
 				maxstep = 2015,
 				minstep = 2005;
 			
@@ -171,7 +171,7 @@ else if (running == true && $("#slider").val() == maxstep) {
 		
 			d3.selectAll(".dot")
 				.transition()
-				.duration(500)
+				.duration(250)
 				.attr("r", function(d) {
 			
 					switch ($("#slider").val()) {
