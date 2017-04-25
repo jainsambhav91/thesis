@@ -2,6 +2,8 @@
 ### Understanding the sex offender registry laws and their collateral consequences
 
 
+
+
 ### Feature List
 
 Housing and Employment
@@ -18,6 +20,9 @@ Mobility and Presence
 
 
 
+
+
+---
 
 This thesis is about the visual exploration of the sex offender registry laws and an attempt to understand how examining these laws from an objective lens can debunk myths about society. Moreover, it also tries to explore the collateral consequences that these laws have, specifically the residence restrictions that it imposes on offenders, and raises questions about the effectiveness of their intentions.
 
@@ -119,7 +124,14 @@ Understanding the impact of collateral consequences: _Chicago_
 
 prototype:
 
-![Alt text](visualization/cityLevel.jpg?raw=true "City Level Prototype")
+![Alt text](visualization/Untitled-1.png?raw=true "City Level Prototype")
+
+![Alt text](visualization/Untitled-2.png?raw=true "City Level Prototype")
+
+![Alt text](visualization/Untitled-3.png?raw=true "City Level Prototype")
+
+![Alt text](visualization/Untitled-4.png?raw=true "City Level Prototype")
+
 
 Data Sources: https://datahub.cmap.illinois.gov/
 
@@ -127,11 +139,11 @@ Data Sources: https://datahub.cmap.illinois.gov/
 
 
 
-### Other Ideas:
+<!--### Other Ideas:-->
 
-Sex Offender Registry Laws: Timeline-
-![Alt text](visualization/IMG_3538.JPG?raw=true "City Level Prototype")
+<!--Sex Offender Registry Laws: Timeline--->
+<!--![Alt text](visualization/IMG_3538.JPG?raw=true "City Level Prototype")-->
 
-Mobility: Possible violations based on start and end point-
-![Alt text](visualization/IMG_3539.JPG?raw=true "City Level Prototype")
+<!--Mobility: Possible violations based on start and end point--->
+<!--![Alt text](visualization/IMG_3539.JPG?raw=true "City Level Prototype")-->
 
