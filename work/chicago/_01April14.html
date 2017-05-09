@@ -40,10 +40,68 @@
         width: 900px;
     }
     
-    #map2{
-        height: 600px;
-        width: 900px;
+    #map2Container{
+        position: relative;
+        
     }
+    
+    #head2Container {
+        background-color: #2c2c2c;
+        box-shadow: 0px 3px 5px #888888;
+        height: 80px;
+        /*float: left;*/
+        position: absolute;
+        width: 100%;
+    }
+    
+    #sideBar2 {
+        position: absolute;
+        background-color: #f6f6f4;
+        width: 20%;
+        height: 650px;
+        margin-left: 80%;
+        
+    }
+    
+    #empLayerIcon {
+        width: 30px;
+        height: 30px;
+        margin-top: 600px;
+        margin-left: 50px;
+    }
+    
+    #resLayerIcon {
+        width: 30px;
+        height: 30px;
+        margin-top: 600px;
+        margin-left: 100px;
+    }
+    
+    #violationsPlaceholder{
+        margin-left: 900px;
+        margin-top: 300px;
+        position: absolute;
+        float: right;
+    }
+    
+    #map2header{
+        
+       /*float: left;*/
+       /*position: absolute;*/
+       font-size: 95%;
+       font-family: 'Libre Baskerville', serif;
+       color: #f6f6f4;
+       /*margin-left: 80px;*/
+    }
+    
+    
+    #map2{
+        float: left;
+        height: 650px;
+        width: 100%;
+    }
+    
+   
     
     p {
         font-family: 'Open Sans';
@@ -56,29 +114,56 @@
     margin-left:50%;
     }
     
+    /*.mapboxgl-ctrl-geocoder {*/
+    /*    max-width: 300px;*/
+    /*}*/
+    
     #firstGeoCoder{
-        margin: 10px 10px 0 0;
+        position: absolute;
+        margin: 90px 0 0 80px;
         float: left;
-        opacity: 0.4;
+        opacity: 0.8;
         /*border-color: white; */
-        background-color: gray;
+        background-color: #e6e6e6;
+        max-width: 200px;
     }
     
     #secondGeoCoder{
-        margin: 200px 10px 0 0;
+        position: absolute;
+        margin: 90px 0 0 400px;
         float: left;
-        opacity: 0.4;
+        opacity: 0.8;
         /*border-color: white; */
-        background-color: gray;
+        background-color: #e6e6e6;
+        max-width: 200px;
     }
     
+    
     ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-          color: white;
+          color: #2c2c2c;
     }
     
     #point1{
         opacity: 0.1;
     }
+    
+    /*.mapboxgl-ctrl-top-right .mapboxgl-ctrl {*/
+    /*    float: left;*/
+    /*    margin: 10px 0 0 10px;*/
+    /*}*/
+    
+    .mapboxgl-ctrl-top-right {
+        top: 0;
+        left: 0;
+        float: left;
+    }
+    
+    #zoomButtons {
+       float: left;
+       margin: 90px 0 0 10px; 
+    }
+    
+    
 
 
 </style>
@@ -86,30 +171,66 @@
 <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.17.0/mapbox-gl-draw.js'></script>
 <script type="text/javascript" src="chicago_basemap_april14.js"></script>
-<script type="text/javascript" src="parks_april14.js"></script>
+<!--<script type="text/javascript" src="parks_april14.js"></script>-->
+<!--<script type="text/javascript" src="parks_april14_buffer_epsg.js"></script>-->
+<!--<script type="text/javascript" src="parks_april14_buffer_dissolved_epsg.js"></script>-->
+<!--<script type="text/javascript" src="schools_check2.js"></script>-->
+<!--<script type="text/javascript" src="schools_check_april25.js"></script>-->
+
+
+<!-- Maps to display, MAP 2 -->
+<script type="text/javascript" src="chicago_basemap_april14.js"></script>
 <script type="text/javascript" src="parks_april14_buffer_epsg.js"></script>
-<script type="text/javascript" src="parks_april14_buffer_dissolved_epsg.js"></script>
+<script type="text/javascript" src="parks_april14_buffer_simplified_epsg.js"></script>
+
+<script type="text/javascript" src="schools_area_buffer_epsg.js"></script>
+<script type="text/javascript" src="schools_area_buffer_simplified_epsg.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script> 
+
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.17.0/mapbox-gl-draw.css' type='text/css'/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css' type='text/css' />
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.1/mapbox-gl-directions.js'></script>
+
+<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700" rel="stylesheet">
+
+
+
 
 <h2>Map 1: Residence and Employment Restrictions</h2>
 
 <div id='map' onmouseup="recalculate()"></div>
 
-<!--<div class='calculation-box'>-->
-<!--    <p>Draw a polygon using the draw tools.</p>-->
-<!--    <div id='calculate' class='button button'>Calculate area</div>-->
-<!--    <div id='calculated-area'></div>-->
-<!--</div>-->
+<div class='calculation-box'>
+    <p>Draw a polygon using the draw tools.</p>
+    <div id='calculate' class='button button'>Calculate area</div>
+    <div id='calculated-area'></div>
+</div>
 
-<h2>Map 2: Mobility and Presence Restrictions</h2>
-
-<div id='map2'></div>
-
+<!--<h3>check</h3>-->
+<div id="map2Container">
+    <div id='map2'></div>
+    <div id="sideBar2">
+        <img id="empLayerIcon" src="icons/empLayerIcon.png" alt="emp layer icon" style="cursor:pointer">
+        <img id="resLayerIcon" src="icons/resLayeIcon.png" alt="res layer icon" style="cursor:pointer">
+    </div>
+        <div id="violationsPlaceholder"></div>
+    <div id="head2Container">
+        <div class="text-center">
+            <h2 id="map2header">Mobility and Presence Restrictions</h2>
+          <!--<h1>My First Bootstrap Page</h1>-->
+          <!--<p>Resize this responsive page to see the effect!</p> -->
+        </div>
+    </div>
+    
+</div>
 
 
 <script>
@@ -125,133 +246,171 @@ var map = new mapboxgl.Map({
 });
 
 
-map.on('load', function () {
+// map.on('load', function () {
 
-    map.addLayer({
-        'id': 'chicago',
-        'type': 'fill',
-        'source': {
-            'type': 'geojson',
-            'data': chicagoBaseMap
-        },
-        'layout': {},
-        'paint': {
-            'fill-color': 'gray',
-            'fill-opacity': 0.1
-        }
-    });
-});
-// var f1 = totalArea.features;
-var f1 = chicagoBaseMap.features;
-// console.log(f1);
-
-// var parksBuffer = turf.buffer(parks, 500, 'feet');
-// var parksBufferDissolve = turf.dissolve(parksBuffer);
-
-map.on('load', function () {
-
-    map.addLayer({
-        'id': 'school',
-        'type': 'fill',
-        'source': {
-            'type': 'geojson',
-            'data': parksBufferDissolved_epsg
-        },
-        'layout': {},
-        'paint': {
-            'fill-color': '#ef2f56',
-            'fill-opacity': 0.8
-        }
-    });
-});
-
-var f2 = parksBufferDissolved_epsg.features;
-
-var point00 = [0, 0];
-var point01 = [0, 900];
-var point11 = [900, 900];
-var point10 = [900, 0];
-
-// console.log("North West Point : " + latlngNW);
-// console.log("South East Point : " + latlngSE);
-
-    // var bbox = [0, 0, 500, 500];
-
-// var draw = new MapboxDraw({
-//     displayControlsDefault: false,
-//     controls: {
-//         polygon: true,
-//         trash: true
-//     }
+//     map.addLayer({
+//         'id': 'chicago',
+//         'type': 'fill',
+//         'source': {
+//             'type': 'geojson',
+//             'data': chicagoBaseMap
+//         },
+//         'layout': {},
+//         'paint': {
+//             'fill-color': 'gray',
+//             'fill-opacity': 0.1
+//         }
+//     });
 // });
-// map.addControl(draw);
+// // var f1 = totalArea.features;
+// var f1 = chicagoBaseMap.features;
+// // console.log(f1);
 
-function recalculate() {
-    var latlng00 = map.unproject(point00);
-    var latlng01 = map.unproject(point01);
-    var latlng11 = map.unproject(point11);
-    var latlng10 = map.unproject(point10);
+// // var parksBuffer = turf.buffer(parks, 500, 'feet');
+// // var parksBufferDissolve = turf.dissolve(parksBuffer);
+
+// map.on('load', function () {
+
+//     map.addLayer({
+//         'id': 'parks',
+//         'type': 'fill',
+//         'source': {
+//             'type': 'geojson',
+//             'data': parksBufferDissolved_epsg
+//         },
+//         'layout': {},
+//         'paint': {
+//             'fill-color': 'black',
+//             'fill-opacity': 0.8,
+//         }
+//     });
+// });
+
+// // var s1 = schools1.features;
+// var s1buffer = turf.buffer(schools1, 500, 'feet');
+
+// map.on('load', function () {
+
+//     map.addLayer({
+//         'id': 'school1',
+//         'type': 'fill',
+//         'source': {
+//             'type': 'geojson',
+//             'data': s1buffer
+//         },
+//         'layout': {},
+//         'paint': {
+//             'fill-color': 'black',
+//             'fill-opacity': 0.2
+//         }
+//     });
+// });
+
+// // var s2buffer = turf.buffer(schools2, 500, 'feet');
+// // map.on('load', function () {
+
+// //     map.addLayer({
+// //         'id': 'school2',
+// //         'type': 'fill',
+// //         'source': {
+// //             'type': 'geojson',
+// //             'data': s2buffer
+// //         },
+// //         'layout': {},
+// //         'paint': {
+// //             'fill-color': 'red',
+// //             'fill-opacity': 0.3
+// //         }
+// //     });
+// // });
+
+// var f2 = parksBufferDissolved_epsg.features;
+
+// var point00 = [0, 0];
+// var point01 = [0, 900];
+// var point11 = [900, 900];
+// var point10 = [900, 0];
+
+// // console.log("North West Point : " + latlngNW);
+// // console.log("South East Point : " + latlngSE);
+
+//     // var bbox = [0, 0, 500, 500];
+
+// // var draw = new MapboxDraw({
+// //     displayControlsDefault: false,
+// //     controls: {
+// //         polygon: true,
+// //         trash: true
+// //     }
+// // });
+// // map.addControl(draw);
+
+// function recalculate() {
+//     var latlng00 = map.unproject(point00);
+//     var latlng01 = map.unproject(point01);
+//     var latlng11 = map.unproject(point11);
+//     var latlng10 = map.unproject(point10);
     
 
-    var bbox = {
-                  "type": "Polygon",
-                  "coordinates": [
-                    [
-                      [latlng00.lng, latlng00.lat],
-                      [latlng01.lng, latlng01.lat],
-                      [latlng11.lng, latlng11.lat],
-                      [latlng10.lng, latlng10.lat],
-                      [latlng00.lng, latlng00.lat]
-                    ]
-                  ]
-                }
+//     var bbox = {
+//                   "type": "Polygon",
+//                   "coordinates": [
+//                     [
+//                       [latlng00.lng, latlng00.lat],
+//                       [latlng01.lng, latlng01.lat],
+//                       [latlng11.lng, latlng11.lat],
+//                       [latlng10.lng, latlng10.lat],
+//                       [latlng00.lng, latlng00.lat]
+//                     ]
+//                   ]
+//                 }
 
-        // console.log(bbox);
+//         // console.log(bbox);
     
-        var data = turf.featureCollection(bbox);
-        // console.log(data);
+//         var data = turf.featureCollection(bbox);
+//         // console.log(data);
         
-        // var dissolvedData = turf.dissolve(data);
-        // console.log(dissolved);
+//         // var dissolvedData = turf.dissolve(data);
+//         // console.log(dissolved);
         
         
-        conflictlist1 = [];
-        conflictlist2 = [];
+//         conflictlist1 = [];
+//         conflictlist2 = [];
 
-        for (var i = 0; i < f1.length; i++) {
-            var parcel1 = f1[i];
+//         for (var i = 0; i < f1.length; i++) {
+//             var parcel1 = f1[i];
         
-                    var conflict = turf.intersect(parcel1.geometry, data.features);
-                    if (conflict != null) {
-                        conflictlist1.push(conflict);
-            }
-        }
+//                     var conflict = turf.intersect(parcel1.geometry, data.features);
+//                     if (conflict != null) {
+//                         conflictlist1.push(conflict);
+//             }
+//         }
         
-        for (var i = 0; i < f2.length; i++) {
-            var parcel2 = f2[i];
+//         for (var i = 0; i < f2.length; i++) {
+//             var parcel2 = f2[i];
 
-                    var conflict2 = turf.intersect(parcel2.geometry, data.features);
-                    if (conflict2 != null) {
-                        conflictlist2.push(conflict2);
-                    }
-        }
+//                     var conflict2 = turf.intersect(parcel2.geometry, data.features);
+//                     if (conflict2 != null) {
+//                         conflictlist2.push(conflict2);
+//                     }
+//         }
         
         
-        var intersectionBase = turf.featureCollection(conflictlist1);
-        var intersectionSchool = turf.featureCollection(conflictlist2);
+//         var intersectionBase = turf.featureCollection(conflictlist1);
+//         var intersectionSchool = turf.featureCollection(conflictlist2);
         
-        var areaBase = turf.area(intersectionBase);
-        var areaSchool = turf.area(intersectionSchool);
+//         var areaBase = turf.area(intersectionBase);
+//         var areaSchool = turf.area(intersectionSchool);
         
-        var rounded_areaBase = Math.round(areaBase*100)/100;
-        var rounded_areaSchool = Math.round(areaSchool*100)/100; 
+//         var rounded_areaBase = Math.round(areaBase*100)/100;
+//         var rounded_areaSchool = Math.round(areaSchool*100)/100; 
         
-        var answer = document.getElementById('calculated-area');
-        var percentage = parseInt((rounded_areaSchool/rounded_areaBase)*100);
-        answer.innerHTML = '<p><strong>' + percentage + '</strong></p><p>% Area prohibited</p> <br>  ';
-}
+//         var answer = document.getElementById('calculated-area');
+//         var percentage = parseInt((rounded_areaSchool/rounded_areaBase)*100);
+//         answer.innerHTML = '<p><strong>' + percentage + '</strong></p><p>% Area prohibited</p> <br>  ';
+// }
 
-var calcButton = document.getElementById('calculate');
+// var calcButton = document.getElementById('calculate');
 
 
 // *******************************************************
@@ -262,54 +421,80 @@ var calcButton = document.getElementById('calculate');
 
 
 
-
+// add mobility and presence restrictions map
 var map2 = new mapboxgl.Map({
     container: 'map2', // container id
     style: 'mapbox://styles/jainsambhav/cj1pghgd300122sp73j3cxiej', //hosted style id
-    center: [-87.623177, 41.881832], // starting position
-    zoom: 10 // starting zoom
+    center: [-87.6, 41.750], // starting position
+    zoom: 10, // starting zoom
+    pitch: 85, // pitch in degrees
+    bearing: 20
 });
 
+map2.scrollZoom.disable();
+map2.addControl(new mapboxgl.NavigationControl());
 
 
+// source location geocoder
 var geocoder1 = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     flyTo: false
 });
 
 var source = 0;
-
 map2.addControl(geocoder1);
 
 
+// destination location geocoder
 var geocoder2 = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     flyTo: false
 });
 
 var destination = 0;
-
-var idCounter = 0;
-
 map2.addControl(geocoder2);
 
-// After the map style has loaded on the page, add a source layer and default
-// styling for a single point.
+var idCounter = 0;
+var idCounter2 = 0;
+var idCounter3 = 0;
+
+// add parks to map2
 map2.on('load', function() {
     
     map2.addLayer({
-        'id': 'school',
+        'id': 'parks_mobility',
         'type': 'fill',
         'source': {
             'type': 'geojson',
-            'data': parksBuffer_epsg
+            'data': parks_display
         },
         'layout': {},
         'paint': {
-            'fill-color': 'black',
-            'fill-opacity': 0.2
+            'fill-color': 'gray',
+            'fill-opacity': 0.8
         }
     });
+    
+// add schools to map2
+    map2.addLayer({
+        'id': 'schools_mobility',
+        'type': 'fill',
+        'source': {
+            'type': 'geojson',
+            'data': schools_display
+        },
+        'layout': {},
+        'paint': {
+            'fill-color': 'gray',
+            'fill-opacity': 0.8
+        }
+    });
+
+map2.setPaintProperty('chicago-employment-epsg', 'fill-opacity', 0)
+map2.setPaintProperty('residential-raw', 'fill-opacity', 0)
+
+// After the map style has loaded on the page, add a source layer and default
+// styling for a single point.
     
     
     map2.addSource('single-point1', {
@@ -320,7 +505,7 @@ map2.on('load', function() {
         }
     });
     
-     map2.addSource('single-point2', {
+    map2.addSource('single-point2', {
         "type": "geojson",
         "data": {
             "type": "FeatureCollection",
@@ -334,8 +519,8 @@ map2.on('load', function() {
         "source": "single-point1",
         "type": "circle",
         "paint": {
-            "circle-radius": 10,
-            "circle-color": "#007cbf"
+            "circle-radius": 7,
+            "circle-color": "#ff4f72"
         }
     });
     
@@ -344,8 +529,8 @@ map2.on('load', function() {
         "source": "single-point2",
         "type": "circle",
         "paint": {
-            "circle-radius": 10,
-            "circle-color": "#007cbf"
+            "circle-radius": 7,
+            "circle-color": "#ff4f72"
         }
     });
    
@@ -378,18 +563,52 @@ map2.on('load', function() {
     
 });
 
+// Event listeners
+var empShown = false;
+
+$('#empLayerIcon').click(function() { 
+    if(map2.getZoom() < 13){ empShown = false; }
+    
+    if(empShown == false){
+    map2.setPaintProperty('chicago-employment-epsg', 'fill-opacity', 0.4)
+    if(map2.getZoom() < 13){map2.setZoom(13);}
+    empShown = !empShown;
+    }
+    else{
+    map2.setPaintProperty('chicago-employment-epsg', 'fill-opacity', 0)
+    if(map2.getZoom() < 13){map2.setZoom(13);}
+    empShown = !empShown;
+    }
+});
+
+var resShown = false;
+
+$('#resLayerIcon').click(function() { 
+    if(map2.getZoom() < 13){ resShown = false; }
+    
+    if(resShown == false){
+    map2.setPaintProperty('residential-raw', 'fill-opacity', 1)
+    if(map2.getZoom() < 13){map2.setZoom(13);}
+    resShown = !resShown;
+    }
+    else{
+    map2.setPaintProperty('residential-raw', 'fill-opacity', 0)
+    if(map2.getZoom() < 13){map2.setZoom(13);}
+    resShown = !resShown;
+    }
+});
+
+
 
 $( "input" ).first().attr("placeholder", "Search Origin");
+// $( "input" ).first().attr("color", "#2c2c2c");
 $("input:eq( 1 )").attr("placeholder", "Search Destination");
 
 $(".mapboxgl-ctrl-geocoder.mapboxgl-ctrl").first().attr('id',   "firstGeoCoder")
 $(".mapboxgl-ctrl-geocoder.mapboxgl-ctrl:eq(1)").attr('id',   "secondGeoCoder")
-
+$(".mapboxgl-ctrl-group ").attr('id', "zoomButtons")
 
 function drawLine(){
-    
-    map2.removeLayer("route" + (idCounter-1));
-    
     
     var lineData = {
                 "type": "Feature",
@@ -404,6 +623,9 @@ function drawLine(){
                 }
             }
     
+    if(idCounter != 0){
+    map2.removeLayer("route" + (idCounter-1));
+    }
     
     map2.addLayer({
         "id": "route" + idCounter,
@@ -417,8 +639,8 @@ function drawLine(){
             "line-cap": "round"
         },
         "paint": {
-            "line-color": "#888",
-            "line-width": 0.5
+            "line-color": "#ff4f72",
+            "line-width": 3
         }
     });
     
@@ -428,46 +650,82 @@ function drawLine(){
         }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
 
         map2.fitBounds(bounds, {
-            padding: 20
+            padding: 100
         });
         
         
     var linesBuffer = turf.buffer(lineData, 10, 'feet');     
-    console.log(linesBuffer);
+    // console.log(linesBuffer);
     
 // count polygons intersecting the line
+var f2 = parks_calculate.features;
+var schoolFeatures = schools_calculate.features;
+// console.log("schoolFeatures" );
+// console.log(schoolFeatures);
 
-var lineAreaConflict = [];
+var lineAreaConflictParks = [];
+var lineAreaConflictSchools = [];
+var conflictingParks = [];
+var conflictingSchools = [];
 
     for (var i = 0; i < f2.length; i++) {
             var parcel2 = f2[i];
 
                     var conflict2 = turf.intersect(parcel2.geometry, linesBuffer.geometry);
                     if (conflict2 != null) {
-                        lineAreaConflict.push(conflict2);
+                        lineAreaConflictParks.push(conflict2);
+                        conflictingParks.push(f2[i]);
+                        
                     }
         }
     
-    var intersectingRegions = turf.featureCollection(lineAreaConflict);    
-    console.log(intersectingRegions);  
+    for (var i=0; i<schoolFeatures.length; i++){
+        var parcel3 = schoolFeatures[i];
+        
+        var conflict3  = turf.intersect(parcel3.geometry, linesBuffer.geometry);
+        if (conflict3 != null) {
+                        lineAreaConflictSchools.push(conflict3);
+                        conflictingSchools.push(schoolFeatures[i]);
+                        // console.log(conflict3);
+                    }
+    }    
+    
+    console.log(conflictingParks);
+    console.log(conflictingSchools);
+    
+    var intersectingSchools = turf.featureCollection(lineAreaConflictSchools); 
+    var intersectingParks = turf.featureCollection(lineAreaConflictParks);
+    // console.log(intersectingRegions);  
     
     // var intersectingRegionsBuffer = turf.buffer(intersectingRegions, 1000, 'feet');
-    var f3 = intersectingRegions.features;
+    var f3 = intersectingSchools.features;
+    var f4 = intersectingParks.features;
     
-    var centroidPt = []
-    for(var i=0; i<f3[0].geometry.coordinates.length; i++){
-        centroidPt.push(turf.centroid(turf.polygon(f3[0].geometry.coordinates[i])).geometry.coordinates)
+    var centroidPt = [];
+    var centroidPt2 = [];
+    
+    for(var i=0; i<f4.length; i++){
+        centroidPt2.push(turf.centroid(turf.polygon(f4[i].geometry.coordinates)).geometry.coordinates)
+        // centroidPt.push(turf.centroid(turf.polygon(f3[0].geometry.coordinates[i])));
+        // centroidPt.push(turf.centroid(f3[0].geometry.coordinates[i]));
+    }
+    
+    for(var i=0; i<f3.length; i++){
+        centroidPt.push(turf.centroid(turf.polygon(f3[i].geometry.coordinates)).geometry.coordinates)
         // centroidPt.push(turf.centroid(turf.polygon(f3[0].geometry.coordinates[i])));
         // centroidPt.push(turf.centroid(f3[0].geometry.coordinates[i]));
     }
     // centroidPt = turf.centroid(intersectingRegions.features)
     
     var centroidPtFinal = turf.multiPoint(centroidPt);
-    // var intersectingRegionsDisplay = turf.buffer(intersectingRegions, 1000, 'feet');
-    // map2.removeLayer("sambhav");
-    if(!map2.getLayer("sambhav")){
+    var centroidPt2Final = turf.multiPoint(centroidPt2);
+    
+    map2.removeLayer("points" + (idCounter2-1));
+    idCounter2++;
+
+        
         map2.addLayer({
-            'id': 'sambhav',
+            'id': 'points' + idCounter2,
             'type': 'circle',
             'source': {
                 'type': 'geojson',
@@ -475,13 +733,43 @@ var lineAreaConflict = [];
             },
             'layout': {},
             'paint': {
-                "circle-radius": 5,
-                "circle-color": "red"
+                "circle-radius": 4,
+                "circle-color": "#f13a5f"
             }
         });
-    }
+
+        map2.removeLayer("points3" + (idCounter3-1));
+        idCounter3++;
+        
+        map2.addLayer({
+            'id': 'points3' + idCounter3,
+            'type': 'circle',
+            'source': {
+                'type': 'geojson',
+                'data': centroidPt2Final
+            },
+            'layout': {},
+            'paint': {
+                "circle-radius": 4,
+                "circle-color": "#f13a5f"
+            }
+        });
+        
+    var possibleViolations = lineAreaConflictParks.length + lineAreaConflictSchools.length;
+    var possibleViolationsNew = conflictingParks.length + conflictingSchools.length;
+    
+    var pv = document.getElementById('violationsPlaceholder');
+    pv.innerHTML = '<p><strong>' + possibleViolations + '</strong></p><p> possible violations </p> <br>  ' + possibleViolationsNew;
+        
+        
+    // console.log(centroidPt.length);
+    // console.log(centroidPt2.length);
+    // console.log(possibleViolations);
     
 }
+
+
+
 
 
 </script>

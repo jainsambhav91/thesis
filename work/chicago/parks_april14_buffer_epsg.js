@@ -1,4 +1,4 @@
-var parksBuffer_epsg = {
+var parks_display = {
 "type": "FeatureCollection",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
