@@ -4,15 +4,31 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css'>
 
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
 	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="https://d3js.org/d3.v3.min.js"></script>	
+	
+	
+	<!-- National Level -->
+	<link rel="stylesheet" href="css/nationalLevel.css">
+	<script src="js/nationalLevel.js"></script> 
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
   	
-	<title>Vertical Fixed Navigation</title>
+	<title>Visualizing Law</title>
 </head>
 <body>
+	<a class="cd-nav-trigger cd-img-replace">Open navigation<span></span></a>
 	<nav id="cd-vertical-nav">
 		<ul>
 			<li>
@@ -53,18 +69,96 @@
 			</li>
 		</ul>
 	</nav>
-	<a class="cd-nav-trigger cd-img-replace">Open navigation<span></span></a>
 
 	<section id="section1" class="cd-section">
-		<h1>Vertical Fixed Navigation</h1>
-		<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>
-	<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>
+	<a href="#section2" class="cd-scroll-down cd-img-replace">scroll down</a>
 	
-		<a href="#section2" class="cd-scroll-down cd-img-replace">scroll down</a>
 	</section><!-- cd-section -->
 
 	<section id="section2" class="cd-section">
-		<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>
+		<div class="container-fluid">
+	
+	<!--	<div id="nlTopBar" class="row">-->
+	<!--	<div class="col-sm-6 col-md-6 text-center">-->
+	<!--		<h3 id="nlHeading">National Level</h3>-->
+	<!--		<h3 id="nlSubHeading"><small>A comparison of SOR laws across states</small></h3>-->
+	<!--	</div>-->
+	<!--	<div class="col-sm-6 col-md-6">-->
+	<!--		<p id="nlContext">Lorem ipsum dolor sit amet, Proin id auctor tellus. at pretium nisi. Donec felis enim, suscipit sed risus id, volutpat convallis nunc. Vestibulum ornare auctor fringilla. Aliquam posuere, odio ut blandit malesuada, enim sem rhoncus arcu, sit amet malesuada lacus orci et urna. Donec nulla elit, consequat varius urna eget, mattis scelerisque magna. Vestibulum ac diam posuere, iaculis odio vel, luctus eros.</p>    -->
+	<!--	</div>-->
+	<!--</div>-->
+	
+		<div id="nlMidBar" class="row">
+		
+		<div class="col-sm-2 col-md-2 text-center" >
+			<div id="leftBar"></div>	
+		</div>
+		<div class="col-sm-8 col-md-8 text-center">
+			<!--<div class="btn tippy" id="tooltip" title="I'm a tooltip!"></div>-->
+			<!--<div id="tooltipCheck" title="Tooltip text"></div>-->
+			<div id="label"></div>
+			<div id="map"></div>
+			<hr>
+		</div>
+		<div class="col-sm-2 col-md-2 text-center" id="rightBar">
+			<div class="col-sm-12 col-md-12 text-center">
+			<button id="minDuration" class="btn btn-default btn-block">Duration in Registry</button>
+			</div>
+			<div class="col-sm-12 col-md-12 text-center">
+			<button id="resRestrictions" class="btn btn-default btn-block">Residence Restrictions</button>
+			</div>
+			<div class="col-sm-12 col-md-12 text-center">
+			<button id="timeline" class="btn btn-default btn-block">Registered Offenders</button>
+			</div>
+		</div>
+		
+	</div>
+	
+		<div id="nlBottomBar" class="row">
+		<div class="col-sm-3 col-md-3 text-center">
+			
+		</div>
+		<div class="col-sm-6 col-md-6 text-center">
+			<ul class="row">
+				<!--<li><button class="btn tippy" title="I'm a tooltip!">Text</button>-->
+					<i id="play" class="material-icons">play_circle_filled</i>
+					<!--<button name="play" id="play" >PLAY</button>-->
+				<!--</li>-->
+				<li>
+					<input  id="slider" type="range" min="2005" max="2015" value="2005" step="1" list="steplist"/>
+				</li>
+				<li>
+					<span  id="range">2005</span>
+				</li>
+			</ul>
+			<div class="row text-center">
+				<svg id="timelineBar" class="col-sm-12 col-md-12 text-center" ></svg>
+			</div>
+			<!--<hr style="border: none; height: 1px; color: blue; background: blue;"/>-->
+			<datalist id="steplist">
+    			<option>2005</option>
+    			<option>2006</option>
+    			<option>2007</option>
+    			<option>2008</option>
+    			<option>2009</option>
+    			<option>2010</option>
+    			<option>2011</option>
+    			<option>2012</option>
+    			<option>2013</option>
+    			<option>2014</option>
+    			<option>2015</option>
+			</datalist>
+			
+			
+		</div>
+		
+		<div class="col-sm-3 col-md-3 text-center">
+			
+		</div>
+	</div>
+	
+	</div>	
+		<!--<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>-->
 	</section><!-- cd-section -->
 
 	<section id="section3" class="cd-section">
@@ -82,7 +176,7 @@
 	<section id="section6" class="cd-section">
 		<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>
 	</section><!-- cd-section -->
-	
+
 <script src="js/jquery-2.1.1.js"></script>
 <script src="js/main.js"></script> <!-- Resource jQuery -->
 </body>

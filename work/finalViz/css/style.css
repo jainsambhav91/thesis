@@ -55,7 +55,7 @@ Main components
 .cd-section {
   min-height: 100%;
   position: relative;
-  padding: 2em 0;
+  /*padding: 2em 0;*/
 }
 .cd-section:nth-of-type(odd) {
   background-color: #3e3947;
@@ -64,24 +64,24 @@ Main components
   color: #898099;
 }
 .cd-section:nth-of-type(even) {
-  background-color: #745360;
+  background-color: #f5f5f5;
 }
 .cd-section:nth-of-type(even) p {
   color: #bda3ad;
 }
 .cd-section h1, .cd-section p {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  bottom: auto;
-  right: auto;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -o-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-  width: 90%;
-  max-width: 768px;
+  /*position: absolute;*/
+  /*left: 50%;*/
+  /*top: 50%;*/
+  /*bottom: auto;*/
+  /*right: auto;*/
+  /*-webkit-transform: translateX(-50%) translateY(-50%);*/
+  /*-moz-transform: translateX(-50%) translateY(-50%);*/
+  /*-ms-transform: translateX(-50%) translateY(-50%);*/
+  /*-o-transform: translateX(-50%) translateY(-50%);*/
+  /*transform: translateX(-50%) translateY(-50%);*/
+  /*width: 90%;*/
+  /*max-width: 768px;*/
   text-align: center;
 }
 .cd-section h1 {
@@ -91,9 +91,10 @@ Main components
   font-size: 20px;
   font-size: 1.25rem;
 }
-.cd-section p {
-  line-height: 1.6;
-}
+/*.cd-section p {*/
+/*  line-height: 1.6;*/
+/*}*/
+
 @media only screen and (min-width: 768px) {
   .cd-section h1 {
     font-size: 30px;
@@ -176,7 +177,7 @@ Main components
 }
 .no-touch #cd-vertical-nav .cd-dot {
   position: relative;
-  /* we set a top value in order to align the dot with the label. If you change label's font, you may need to change this top value*/
+   /*we set a top value in order to align the dot with the label. If you change label's font, you may need to change this top value*/
   top: 8px;
   height: 12px;
   width: 12px;
