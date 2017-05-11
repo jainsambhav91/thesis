@@ -67,7 +67,7 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 var dateFormat = d3.time.format("%Y");	
 		
 
-	var svg = d3.select("#map")
+	var svg = d3.select("#mapCheck")
 		.append("svg")
 		    .attr("width", width)
 			.attr("height", height);
@@ -113,6 +113,18 @@ svg.selectAll("path")
 	.style("stroke", "#e5e5e5")
 	.style("stroke-width", "1")
 	.style("fill", "#f9f9f9");
+
+svg.selectAll(".dotFixed")
+	.data(data)
+	.enter()
+	.append("circle")
+	.attr("class", "dotFixed")
+	.attr("cx", function(d) {return projection([d.lon, d.lat])[0];})
+	.attr("cy", function(d) {return projection([d.lon, d.lat])[1];})
+	.attr("r", function(d) {return Math.sqrt(d.y2005) * 4;})
+	.style("stroke", "black")	
+	.style("fill", "none")
+
 	
 // show per capita sex offenders for year 2005 on page load 
 svg.selectAll(".dot")
@@ -124,7 +136,7 @@ svg.selectAll(".dot")
 	.attr("cy", function(d) {return projection([d.lon, d.lat])[1];})
 	.attr("r", function(d) {return Math.sqrt(d.y2005) * 4;})
 	.style("fill", "#e82c51")	
-	.style("opacity", 0.7)	
+	.style("opacity", 0.8)	
 	.on("mouseover", function(d) {   
 		
 		// d3.select("#tooltipCheck").text(d.StateName);
@@ -247,6 +259,7 @@ else if (running == true && $("#slider").val() == maxstep) {
 							d3.selectAll("#year2005").attr("fill-opacity", "1");
 							d3.selectAll("#year2005").attr("font-weight", "bold");
 							d3.selectAll("#bar0").attr("fill-opacity", "1");
+							
 							return Math.sqrt(d.y2005) * 4.5;
 							break;
 						case "2006":
@@ -256,6 +269,7 @@ else if (running == true && $("#slider").val() == maxstep) {
 							d3.selectAll("#year2006").attr("fill-opacity", "1");
 							d3.selectAll("#year2006").attr("font-weight", "bold");
 							d3.selectAll("#bar1").attr("fill-opacity", "1");
+							// d3.selectAll(".dot").style("fill", "#e82c51")
 							return Math.sqrt(d.y2006) * 4.5;
 							break;
 						case "2007":
@@ -265,6 +279,7 @@ else if (running == true && $("#slider").val() == maxstep) {
 							d3.selectAll("#year2007").attr("fill-opacity", "1");
 							d3.selectAll("#year2007").attr("font-weight", "bold");
 							d3.selectAll("#bar2").attr("fill-opacity", "1");
+							// d3.selectAll(".dot").style("fill", "#e82c51")
 							return Math.sqrt(d.y2007) * 4.5;
 							break;
 						case "2008":
@@ -274,6 +289,7 @@ else if (running == true && $("#slider").val() == maxstep) {
 							d3.selectAll("#year2008").attr("fill-opacity", "1");
 							d3.selectAll("#year2008").attr("font-weight", "bold");
 							d3.selectAll("#bar3").attr("fill-opacity", "1");
+							// d3.selectAll(".dot").style("fill", "#e82c51")
 							return Math.sqrt(d.y2008) * 4.5;
 							break;
 						case "2009":
@@ -283,6 +299,7 @@ else if (running == true && $("#slider").val() == maxstep) {
 							d3.selectAll("#year2009").attr("fill-opacity", "1");
 							d3.selectAll("#year2009").attr("font-weight", "bold");
 							d3.selectAll("#bar4").attr("fill-opacity", "1");
+							// d3.selectAll(".dot").style("fill", "#e82c51")
 							return Math.sqrt(d.y2009) * 4.5;
 							break;
 						case "2010":
@@ -292,6 +309,7 @@ else if (running == true && $("#slider").val() == maxstep) {
 							d3.selectAll("#year2010").attr("fill-opacity", "1");
 							d3.selectAll("#year2010").attr("font-weight", "bold");
 							d3.selectAll("#bar5").attr("fill-opacity", "1");
+							// d3.selectAll(".dot").style("fill", "#e82c51")
 							return Math.sqrt(d.y2010) * 4.5;
 							break;
 						case "2011":
@@ -301,6 +319,7 @@ else if (running == true && $("#slider").val() == maxstep) {
 							d3.selectAll("#year2011").attr("fill-opacity", "1");
 							d3.selectAll("#year2011").attr("font-weight", "bold");
 							d3.selectAll("#bar6").attr("fill-opacity", "1");
+							// d3.selectAll(".dot").style("fill", "#e82c51")
 							return Math.sqrt(d.y2011) * 4.5;
 							break;
 						case "2012":
@@ -310,6 +329,7 @@ else if (running == true && $("#slider").val() == maxstep) {
 							d3.selectAll("#year2012").attr("fill-opacity", "1");
 							d3.selectAll("#year2012").attr("font-weight", "bold");
 							d3.selectAll("#bar7").attr("fill-opacity", "1");
+							// d3.selectAll(".dot").style("fill", "#e82c51")
 							return Math.sqrt(d.y2012) * 4.5;
 							break;
 						case "2013":
@@ -319,6 +339,7 @@ else if (running == true && $("#slider").val() == maxstep) {
 							d3.selectAll("#year2013").attr("fill-opacity", "1");
 							d3.selectAll("#year2013").attr("font-weight", "bold");
 							d3.selectAll("#bar8").attr("fill-opacity", "1");
+							// d3.selectAll(".dot").style("fill", "#e82c51")
 							return Math.sqrt(d.y2013) * 4.5;
 							break;
 						case "2014":
@@ -328,6 +349,7 @@ else if (running == true && $("#slider").val() == maxstep) {
 							d3.selectAll("#year2014").attr("fill-opacity", "1");
 							d3.selectAll("#year2014").attr("font-weight", "bold");
 							d3.selectAll("#bar9").attr("fill-opacity", "1");
+							// d3.selectAll(".dot").style("fill", "#e82c51")
 							return Math.sqrt(d.y2014) * 4.5;
 							break;
 						case "2015":
@@ -337,6 +359,7 @@ else if (running == true && $("#slider").val() == maxstep) {
 							d3.selectAll("#year2015").attr("fill-opacity", "1");
 							d3.selectAll("#year2015").attr("font-weight", "bold");
 							d3.selectAll("#bar10").attr("fill-opacity", "1");
+							// d3.selectAll(".dot").style("fill", "#e82c51")
 							return Math.sqrt(d.y2015) * 4.5;
 							break;
 					}

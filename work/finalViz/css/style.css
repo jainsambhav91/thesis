@@ -16,8 +16,8 @@ html * {
 
 body {
   font-size: 100%;
-  font-family: "Ubuntu", sans-serif;
-  color: #3e3947;
+  /*font-family: "Ubuntu", sans-serif;*/
+  /*color: #3e3947;*/
   background-color: white;
 }
 
@@ -58,16 +58,16 @@ Main components
   /*padding: 2em 0;*/
 }
 .cd-section:nth-of-type(odd) {
-  background-color: #3e3947;
+  background-color: #f8f8f8;
 }
 .cd-section:nth-of-type(odd) p {
-  color: #898099;
+  /*color: #898099;*/
 }
 .cd-section:nth-of-type(even) {
   background-color: #f5f5f5;
 }
 .cd-section:nth-of-type(even) p {
-  color: #bda3ad;
+  /*color: #bda3ad;*/
 }
 .cd-section h1, .cd-section p {
   /*position: absolute;*/

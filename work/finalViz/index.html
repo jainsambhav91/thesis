@@ -11,7 +11,16 @@
 	<script src="js/modernizr.js"></script> <!-- Modernizr -->
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script src="https://d3js.org/d3.v3.min.js"></script>	
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
+    
+    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
+	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.17.0/mapbox-gl-draw.js'></script>
+	<script type="text/javascript" src="js/chicago_basemap_april14.js"></script>
+	<script type="text/javascript" src="js/parks_april14_buffer_epsg.js"></script>
+	<script type="text/javascript" src="js/schools_area_buffer_epsg.js"></script>
 	
 	
 	<!-- National Level -->
@@ -19,6 +28,23 @@
 	<script src="js/nationalLevel.js"></script> 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	
+	<!--Residence and Emp restrictions-->
+	<link rel="stylesheet" href="css/resandemp.css">
+	<script src="js/resandemp.js"></script> 
+	
+	
+	<!-- Mobility and presence -->
+	<link rel="stylesheet" href="css/mobandpres.css">
+	<script src="js/mobandpres.js"></script> 
+	
+	<script type="text/javascript" src="js/parks_april14_buffer_simplified_epsg.js"></script>
+	<script type="text/javascript" src="js/schools_area_buffer_simplified_epsg.js"></script>
+
+	
+	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
+	<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css' type='text/css' />
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
+	<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script> 
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -29,53 +55,60 @@
 </head>
 <body>
 	<a class="cd-nav-trigger cd-img-replace">Open navigation<span></span></a>
-	<nav id="cd-vertical-nav">
-		<ul>
-			<li>
-				<a href="#section1" data-number="1">
-					<span class="cd-dot"></span>
-					<span class="cd-label">Intro</span>
-				</a>
-			</li>
-			<li>
-				<a href="#section2" data-number="2">
-					<span class="cd-dot"></span>
-					<span class="cd-label">About</span>
-				</a>
-			</li>
-			<li>
-				<a href="#section3" data-number="3">
-					<span class="cd-dot"></span>
-					<span class="cd-label">Features</span>
-				</a>
-			</li>
-			<li>
-				<a href="#section4" data-number="4">
-					<span class="cd-dot"></span>
-					<span class="cd-label">Portfolio</span>
-				</a>
-			</li>
-			<li>
-				<a href="#section5" data-number="5">
-					<span class="cd-dot"></span>
-					<span class="cd-label">Pricing</span>
-				</a>
-			</li>
-			<li>
-				<a href="#section6" data-number="6">
-					<span class="cd-dot"></span>
-					<span class="cd-label">Contact</span>
-				</a>
-			</li>
-		</ul>
-	</nav>
+	<!--<nav id="cd-vertical-nav">-->
+	<!--	<ul>-->
+	<!--		<li>-->
+	<!--			<a href="#section1" data-number="1">-->
+	<!--				<span class="cd-dot"></span>-->
+	<!--				<span class="cd-label">Intro</span>-->
+	<!--			</a>-->
+	<!--		</li>-->
+	<!--		<li>-->
+	<!--			<a href="#section2" data-number="2">-->
+	<!--				<span class="cd-dot"></span>-->
+	<!--				<span class="cd-label">About</span>-->
+	<!--			</a>-->
+	<!--		</li>-->
+	<!--		<li>-->
+	<!--			<a href="#section3" data-number="3">-->
+	<!--				<span class="cd-dot"></span>-->
+	<!--				<span class="cd-label">Features</span>-->
+	<!--			</a>-->
+	<!--		</li>-->
+	<!--		<li>-->
+	<!--			<a href="#section4" data-number="4">-->
+	<!--				<span class="cd-dot"></span>-->
+	<!--				<span class="cd-label">Portfolio</span>-->
+	<!--			</a>-->
+	<!--		</li>-->
+	<!--		<li>-->
+	<!--			<a href="#section5" data-number="5">-->
+	<!--				<span class="cd-dot"></span>-->
+	<!--				<span class="cd-label">Pricing</span>-->
+	<!--			</a>-->
+	<!--		</li>-->
+	<!--		<li>-->
+	<!--			<a href="#section6" data-number="6">-->
+	<!--				<span class="cd-dot"></span>-->
+	<!--				<span class="cd-label">Contact</span>-->
+	<!--			</a>-->
+	<!--		</li>-->
+	<!--	</ul>-->
+	<!--</nav>-->
 
 	<section id="section1" class="cd-section">
-	<a href="#section2" class="cd-scroll-down cd-img-replace">scroll down</a>
+	<img src="img/titlePage.jpg" alt="Title Page" style="width:100%">
+	<!--<a href="#section2" class="cd-scroll-down cd-img-replace">scroll down</a>-->
+	
+	</section><!-- cd-section -->
+	
+	<section id="section2" class="cd-section">
+	<img src="img/slide_02.jpg" alt="Title Page" style="width:100%">
+	<!--<a href="#section2" class="cd-scroll-down cd-img-replace">scroll down</a>-->
 	
 	</section><!-- cd-section -->
 
-	<section id="section2" class="cd-section">
+	<section id="section3" class="cd-section">
 		<div class="container-fluid">
 	
 	<!--	<div id="nlTopBar" class="row">-->
@@ -97,7 +130,7 @@
 			<!--<div class="btn tippy" id="tooltip" title="I'm a tooltip!"></div>-->
 			<!--<div id="tooltipCheck" title="Tooltip text"></div>-->
 			<div id="label"></div>
-			<div id="map"></div>
+			<div id="mapCheck"></div>
 			<hr>
 		</div>
 		<div class="col-sm-2 col-md-2 text-center" id="rightBar">
@@ -161,21 +194,68 @@
 		<!--<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>-->
 	</section><!-- cd-section -->
 
-	<section id="section3" class="cd-section">
-		<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>
-	</section><!-- cd-section -->
+	<!--<section id="section3" class="cd-section">-->
+	<!--	<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>-->
+	<!--</section><!-- cd-section -->
+
+	<!--<section id="section4" class="cd-section">-->
+	<!--	<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>-->
+	<!--</section><!-- cd-section -->
 
 	<section id="section4" class="cd-section">
-		<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>
-	</section><!-- cd-section -->
+		<!--<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>-->
+		<div class="container-fluid">
+    
+    <div id="map"></div>
+    
+    <div id="map1topBar" class="row">
+        <!--<div class="col-sm-6 col-md-6">-->
+            <!--<h3 id="map1heading" class="col-sm-12 col-md-12 text-center"> Collateral Consequences: </h3>-->
+            <h3 id="map1subHeading" class="col-sm-12 col-md-12 text-center">Collateral Consequences: Residence and Employment Restrictions</h3>
+        <!--</div>-->
+        <!--<p  id="map1context" class="col-sm-6 col-md-6">Lorem ipsum dolor sit amet, Proin id auctor tellus. at pretium nisi. Integer rutrum vitae augue quis sodales. Donec porta enim in orci euismod varius. Donec felis enim, suscipit sed risus id, volutpat convallis nunc. Vestibulum ornare auctor fringilla. Aliquam posuere, odio ut blandit malesuada, enim sem rhoncus arcu, sit amet malesuada lacus orci et urna. Donec nulla elit, consequat varius urna eget, mattis scelerisque magna. Vestibulum ac diam posuere, iaculis odio vel, luctus eros.</p>    -->
+    </div>
+    
+    <div id="map1bottomBar" class="row">
+        <div id="map1bottomBar01" class="col-sm-3 col-md-3 text-center map1bottomBar">
+            <p class="col-sm-12 col-md-12 text-center" > In <br> <span id="neighborhoodName"> Neighborhood </span></p>  
+        </div>
+        <div id="map1bottomBar02" class="col-sm-3 col-md-3 text-center map1bottomBar">
+           <p class="col-sm-12 col-md-12 text-center"> <span id="resPercent"> 34 </span>% <br>of residential land-use area</p> 
+        </div>
+        <div id="map1bottomBar03" class="col-sm-3 col-md-3 text-center map1bottomBar">
+           <p class="col-sm-12 col-md-12 text-center"> and <span id="empPercent"> 60 </span>%<br> of employment land-use area</p>  
+        </div>
+        <div id="map1bottomBar04" class="col-sm-3 col-md-3 text-center map1bottomBar">
+            <p class="col-sm-12 col-md-12 text-center"> is prohibited to registered sex offenders.</p>  
+        </div>
+    </div>
 
-	<section id="section5" class="cd-section">
-		<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>
+</div>
+
 	</section><!-- cd-section -->
 
 	<section id="section6" class="cd-section">
-		<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>
-	</section><!-- cd-section -->
+		<!--<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>-->
+
+	<div id="map2Container">
+    <div id='map2'></div>
+    <div id="sideBar2">
+        <img id="empLayerIcon" src="img/empLayerIcon.png" alt="emp layer icon" style="cursor:pointer">
+        <img id="resLayerIcon" src="img/resLayeIcon.png" alt="res layer icon" style="cursor:pointer">
+    </div>
+        <div id="violationsPlaceholder"></div>
+    <div id="head2Container">
+        <div class="text-center">
+            <h2 id="map2header">Mobility and Presence Restrictions</h2>
+          <!--<h1>My First Bootstrap Page</h1>-->
+          <!--<p>Resize this responsive page to see the effect!</p> -->
+        </div>
+    </div>
+    
+</div>
+	</section>
+	<!-- cd-section -->
 
 <script src="js/jquery-2.1.1.js"></script>
 <script src="js/main.js"></script> <!-- Resource jQuery -->

@@ -25,7 +25,7 @@
              color: #f6f6f4; font-family: 'Libre Baskerville', serif; margin-bottom: 0px; margin-top: 20px;
         }
         #map1subHeading {
-             color: #f6f6f4; font-family: 'Libre Baskerville', serif; margin-bottom: 20px; margin-top: 0px;
+             color: #f6f6f4; font-family: 'Libre Baskerville', serif; margin-bottom: 20px; margin-top: 20px;
         }
         #map1context {
             color: #f6f6f4; font-size: 73%; font-family: 'Libre Baskerville'; margin-top: 10px; margin-bottom: 10px;
@@ -34,7 +34,7 @@
         #neighborhoodName {
             font-family: 'Libre Baskerville', serif;
             color: #e82c51;
-            font-size: 130%;
+            font-size: 150%;
         }
         #resPercent {
            font-family: 'Libre Baskerville', serif;
@@ -59,11 +59,13 @@
 <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.17.0/mapbox-gl-draw.js'></script>
 <script type="text/javascript" src="chicago_basemap_april14.js"></script>
-<script type="text/javascript" src="parks_april14.js"></script>
 <script type="text/javascript" src="parks_april14_buffer_epsg.js"></script>
-<script type="text/javascript" src="parks_april14_buffer_dissolved_epsg.js"></script>
-<script type="text/javascript" src="schools_check2.js"></script>
-<script type="text/javascript" src="schools_check_april25.js"></script>
+<script type="text/javascript" src="schools_area_buffer_epsg.js"></script>
+<!--<script type="text/javascript" src="parks_april14.js"></script>-->
+<!--<script type="text/javascript" src="parks_april14_buffer_epsg.js"></script>-->
+<!--<script type="text/javascript" src="parks_april14_buffer_dissolved_epsg.js"></script>-->
+<!--<script type="text/javascript" src="schools_check2.js"></script>-->
+<!--<script type="text/javascript" src="schools_check_april25.js"></script>-->
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -76,7 +78,7 @@
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css' type='text/css' />
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.1/mapbox-gl-directions.js'></script>
+<!--<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.1/mapbox-gl-directions.js'></script>-->
 
 <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700" rel="stylesheet">
 
@@ -86,11 +88,11 @@
     <div id="map"></div>
     
     <div id="map1topBar" class="row">
-        <div class="col-sm-6 col-md-6">
-            <h3 id="map1heading" class="col-sm-12 col-md-12 text-center"> Collateral Consequences: </h3>
-            <h3 id="map1subHeading" class="col-sm-12 col-md-12 text-center"><small>Residence and Employment Restrictions</small></h3>
-        </div>
-        <p  id="map1context" class="col-sm-6 col-md-6">Lorem ipsum dolor sit amet, Proin id auctor tellus. at pretium nisi. Integer rutrum vitae augue quis sodales. Donec porta enim in orci euismod varius. Donec felis enim, suscipit sed risus id, volutpat convallis nunc. Vestibulum ornare auctor fringilla. Aliquam posuere, odio ut blandit malesuada, enim sem rhoncus arcu, sit amet malesuada lacus orci et urna. Donec nulla elit, consequat varius urna eget, mattis scelerisque magna. Vestibulum ac diam posuere, iaculis odio vel, luctus eros.</p>    
+        <!--<div class="col-sm-6 col-md-6">-->
+            <!--<h3 id="map1heading" class="col-sm-12 col-md-12 text-center"> Collateral Consequences: </h3>-->
+            <h3 id="map1subHeading" class="col-sm-12 col-md-12 text-center">Collateral Consequences: Residence and Employment Restrictions</h3>
+        <!--</div>-->
+        <!--<p  id="map1context" class="col-sm-6 col-md-6">Lorem ipsum dolor sit amet, Proin id auctor tellus. at pretium nisi. Integer rutrum vitae augue quis sodales. Donec porta enim in orci euismod varius. Donec felis enim, suscipit sed risus id, volutpat convallis nunc. Vestibulum ornare auctor fringilla. Aliquam posuere, odio ut blandit malesuada, enim sem rhoncus arcu, sit amet malesuada lacus orci et urna. Donec nulla elit, consequat varius urna eget, mattis scelerisque magna. Vestibulum ac diam posuere, iaculis odio vel, luctus eros.</p>    -->
     </div>
     
     <div id="map1bottomBar" class="row">
@@ -118,8 +120,10 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiamFpbnNhbWJoYXYiLCJhIjoiY2l1aW5uOTZ5MDAwOTJvc
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/jainsambhav/cj1pghgd300122sp73j3cxiej', //hosted style id
-    center: [-87.623177, 41.881832], // starting position
-    zoom: 10 // starting zoom
+    center: [-87.630000, 41.801832], // starting position
+    zoom: 11, // starting zoom
+    pitch: 30, // pitch in degrees
+    bearing: 60
 });
 
 map.on('load', function () {
@@ -134,10 +138,81 @@ map.on('load', function () {
         'layout': {},
         'paint': {
             'fill-color': 'gray',
-            'fill-opacity': 0.1
+            'fill-opacity': 0.2,
+            'fill-outline-color': 'black'
         }
     });
+    
+    map.addLayer({
+        "id": "neighborhood-fills-hover",
+        "type": "line",
+        'source': {
+            'type': 'geojson',
+            'data': chicagoBaseMap
+        },
+        "layout": {},
+        "paint": {
+            "line-color": "#e82c51",
+            "line-width": 1
+        }
+    });
+    
+    map.addLayer({
+        'id': 'parks_mobility',
+        'type': 'fill',
+        'source': {
+            'type': 'geojson',
+            'data': parks_display
+        },
+        'layout': {},
+        'paint': {
+            'fill-color': 'gray',
+            'fill-opacity': 0.6
+        }
+    });
+    
+// add schools to map2
+    map.addLayer({
+        'id': 'schools_mobility',
+        'type': 'fill',
+        'source': {
+            'type': 'geojson',
+            'data': schools_display
+        },
+        'layout': {},
+        'paint': {
+            'fill-color': 'gray',
+            'fill-opacity': 0.6
+        }
+    });
+    
+    
+    // map.addLayer({
+    //     "id": "neighborhood-fills-hover",
+    //     "type": "fill",
+    //     'source': {
+    //         'type': 'geojson',
+    //         'data': chicagoBaseMap
+    //     },
+    //     "layout": {},
+    //     "paint": {
+    //         "fill-color": "gray",
+    //         "fill-opacity": 0.6,
+    //         'fill-outline-color': 'black'
+    //     },
+    //     "filter": ["==", "PRI_NEIGH", ""]
+    // });
+    
+    // map.on("click", "chicago", function(e) {
+    //     map.setFilter("neighborhood-fills-hover", ["==", "PRI_NEIGH", e.features[0].properties.PRI_NEIGH]);
+    // });
+    
+    //  map.on("mouseleave", "chicago", function() {
+    //     map.setFilter("neighborhood-fills-hover", ["==", "PRI_NEIGH", ""]);
+    // });
 });
+
+
 
 </script>
 

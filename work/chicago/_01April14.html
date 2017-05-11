@@ -204,15 +204,15 @@
 
 
 
-<h2>Map 1: Residence and Employment Restrictions</h2>
+<!--<h2>Map 1: Residence and Employment Restrictions</h2>-->
 
-<div id='map' onmouseup="recalculate()"></div>
+<!--<div id='map' onmouseup="recalculate()"></div>-->
 
-<div class='calculation-box'>
-    <p>Draw a polygon using the draw tools.</p>
-    <div id='calculate' class='button button'>Calculate area</div>
-    <div id='calculated-area'></div>
-</div>
+<!--<div class='calculation-box'>-->
+<!--    <p>Draw a polygon using the draw tools.</p>-->
+<!--    <div id='calculate' class='button button'>Calculate area</div>-->
+<!--    <div id='calculated-area'></div>-->
+<!--</div>-->
 
 <!--<h3>check</h3>-->
 <div id="map2Container">
@@ -237,13 +237,13 @@
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiamFpbnNhbWJoYXYiLCJhIjoiY2l1aW5uOTZ5MDAwOTJvcGxrMWg4OHUxciJ9.X8mAbHJEKa78PHXfVRK5-Q';
-/* eslint-disable */
-var map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/jainsambhav/cj1pghgd300122sp73j3cxiej', //hosted style id
-    center: [-87.623177, 41.881832], // starting position
-    zoom: 10 // starting zoom
-});
+// /* eslint-disable */
+// var map = new mapboxgl.Map({
+//     container: 'map', // container id
+//     style: 'mapbox://styles/jainsambhav/cj1pghgd300122sp73j3cxiej', //hosted style id
+//     center: [-87.623177, 41.881832], // starting position
+//     zoom: 10 // starting zoom
+// });
 
 
 // map.on('load', function () {
@@ -661,7 +661,7 @@ function drawLine(){
 var f2 = parks_calculate.features;
 var schoolFeatures = schools_calculate.features;
 // console.log("schoolFeatures" );
-// console.log(schoolFeatures);
+console.log(schools_calculate);
 
 var lineAreaConflictParks = [];
 var lineAreaConflictSchools = [];
@@ -760,7 +760,22 @@ var conflictingSchools = [];
     
     var pv = document.getElementById('violationsPlaceholder');
     pv.innerHTML = '<p><strong>' + possibleViolations + '</strong></p><p> possible violations </p> <br>  ' + possibleViolationsNew;
+     
+    var yCoords = [];
+    
+    for(var i = 0; i<conflictingSchools.length; i++){
         
+    // var point = new mapboxgl.LngLat(-87.62509094503946, 41.800682041690266);
+    
+    var point = new mapboxgl.LngLat(conflictingSchools[i].geometry.coordinates[0][0][0], conflictingSchools[i].geometry.coordinates[0][0][1]);
+    
+    var pixelPoint = map2.project(point);
+    yCoords.push(pixelPoint.y);
+    // console.log(pixelPoint);
+        
+    }    
+    
+    console.log(yCoords);    
         
     // console.log(centroidPt.length);
     // console.log(centroidPt2.length);
