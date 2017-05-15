@@ -1,263 +1,131 @@
-<!doctype html>
-<html lang="en" class="no-js">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <title>Visualizaing Law</title>
 
-	<link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css'>
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="deck.js-latest/core/deck.core.css">
 
-	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
-	<script src="js/modernizr.js"></script> <!-- Modernizr -->
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script src="https://d3js.org/d3.v3.min.js"></script>
-	
-	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
-    
-    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
-	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.17.0/mapbox-gl-draw.js'></script>
-	<script type="text/javascript" src="js/chicago_basemap_april14.js"></script>
-	<script type="text/javascript" src="js/parks_april14_buffer_epsg.js"></script>
-	<script type="text/javascript" src="js/schools_area_buffer_epsg.js"></script>
-	
-	
-	<!-- National Level -->
-	<link rel="stylesheet" href="css/nationalLevel.css">
-	<script src="js/nationalLevel.js"></script> 
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	
-	<!--Residence and Emp restrictions-->
-	<link rel="stylesheet" href="css/resandemp.css">
-	<script src="js/resandemp.js"></script> 
-	
-	
-	<!-- Mobility and presence -->
-	<link rel="stylesheet" href="css/mobandpres.css">
-	<script src="js/mobandpres.js"></script> 
-	
-	<script type="text/javascript" src="js/parks_april14_buffer_simplified_epsg.js"></script>
-	<script type="text/javascript" src="js/schools_area_buffer_simplified_epsg.js"></script>
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="deck.js-latest/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="deck.js-latest/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="deck.js-latest/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="deck.js-latest/extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="deck.js-latest/extensions/scale/deck.scale.css">
 
-	
-	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
-	<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css' type='text/css' />
-	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
-	<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script> 
-	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
-  	
-	<title>Visualizing Law</title>
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <!--<link rel="stylesheet" media="screen" href="deck.js-latest/themes/style/web-2.0.css">-->
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <!--<link rel="stylesheet" media="screen" href="deck.js-latest/themes/transition/horizontal-slide.css">-->
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="deck.js-latest/core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="deck.js-latest/modernizr.custom.js"></script>
 </head>
 <body>
-	<a class="cd-nav-trigger cd-img-replace">Open navigation<span></span></a>
-	<!--<nav id="cd-vertical-nav">-->
-	<!--	<ul>-->
-	<!--		<li>-->
-	<!--			<a href="#section1" data-number="1">-->
-	<!--				<span class="cd-dot"></span>-->
-	<!--				<span class="cd-label">Intro</span>-->
-	<!--			</a>-->
-	<!--		</li>-->
-	<!--		<li>-->
-	<!--			<a href="#section2" data-number="2">-->
-	<!--				<span class="cd-dot"></span>-->
-	<!--				<span class="cd-label">About</span>-->
-	<!--			</a>-->
-	<!--		</li>-->
-	<!--		<li>-->
-	<!--			<a href="#section3" data-number="3">-->
-	<!--				<span class="cd-dot"></span>-->
-	<!--				<span class="cd-label">Features</span>-->
-	<!--			</a>-->
-	<!--		</li>-->
-	<!--		<li>-->
-	<!--			<a href="#section4" data-number="4">-->
-	<!--				<span class="cd-dot"></span>-->
-	<!--				<span class="cd-label">Portfolio</span>-->
-	<!--			</a>-->
-	<!--		</li>-->
-	<!--		<li>-->
-	<!--			<a href="#section5" data-number="5">-->
-	<!--				<span class="cd-dot"></span>-->
-	<!--				<span class="cd-label">Pricing</span>-->
-	<!--			</a>-->
-	<!--		</li>-->
-	<!--		<li>-->
-	<!--			<a href="#section6" data-number="6">-->
-	<!--				<span class="cd-dot"></span>-->
-	<!--				<span class="cd-label">Contact</span>-->
-	<!--			</a>-->
-	<!--		</li>-->
-	<!--	</ul>-->
-	<!--</nav>-->
+  <div class="deck-container">
 
-	<section id="section1" class="cd-section">
-	<img src="img/titlePage.jpg" alt="Title Page" style="width:100%">
-	<!--<a href="#section2" class="cd-scroll-down cd-img-replace">scroll down</a>-->
-	
-	</section><!-- cd-section -->
-	
-	<section id="section2" class="cd-section">
-	<img src="img/slide_02.jpg" alt="Title Page" style="width:100%">
-	<!--<a href="#section2" class="cd-scroll-down cd-img-replace">scroll down</a>-->
-	
-	</section><!-- cd-section -->
+    <!-- Begin slides. Just make elements with a class of slide. -->
 
-	<section id="section3" class="cd-section">
-		<div class="container-fluid">
-	
-	<!--	<div id="nlTopBar" class="row">-->
-	<!--	<div class="col-sm-6 col-md-6 text-center">-->
-	<!--		<h3 id="nlHeading">National Level</h3>-->
-	<!--		<h3 id="nlSubHeading"><small>A comparison of SOR laws across states</small></h3>-->
-	<!--	</div>-->
-	<!--	<div class="col-sm-6 col-md-6">-->
-	<!--		<p id="nlContext">Lorem ipsum dolor sit amet, Proin id auctor tellus. at pretium nisi. Donec felis enim, suscipit sed risus id, volutpat convallis nunc. Vestibulum ornare auctor fringilla. Aliquam posuere, odio ut blandit malesuada, enim sem rhoncus arcu, sit amet malesuada lacus orci et urna. Donec nulla elit, consequat varius urna eget, mattis scelerisque magna. Vestibulum ac diam posuere, iaculis odio vel, luctus eros.</p>    -->
-	<!--	</div>-->
-	<!--</div>-->
-	
-		<div id="nlMidBar" class="row">
-		
-		<div class="col-sm-2 col-md-2 text-center" >
-			<div id="leftBar"></div>	
-		</div>
-		<div class="col-sm-8 col-md-8 text-center">
-			<!--<div class="btn tippy" id="tooltip" title="I'm a tooltip!"></div>-->
-			<!--<div id="tooltipCheck" title="Tooltip text"></div>-->
-			<div id="label"></div>
-			<div id="mapCheck"></div>
-			<hr>
-		</div>
-		<div class="col-sm-2 col-md-2 text-center" id="rightBar">
-			<div class="col-sm-12 col-md-12 text-center">
-			<button id="minDuration" class="btn btn-default btn-block">Duration in Registry</button>
-			</div>
-			<div class="col-sm-12 col-md-12 text-center">
-			<button id="resRestrictions" class="btn btn-default btn-block">Residence Restrictions</button>
-			</div>
-			<div class="col-sm-12 col-md-12 text-center">
-			<button id="timeline" class="btn btn-default btn-block">Registered Offenders</button>
-			</div>
-		</div>
-		
-	</div>
-	
-		<div id="nlBottomBar" class="row">
-		<div class="col-sm-3 col-md-3 text-center">
-			
-		</div>
-		<div class="col-sm-6 col-md-6 text-center">
-			<ul class="row">
-				<!--<li><button class="btn tippy" title="I'm a tooltip!">Text</button>-->
-					<i id="play" class="material-icons">play_circle_filled</i>
-					<!--<button name="play" id="play" >PLAY</button>-->
-				<!--</li>-->
-				<li>
-					<input  id="slider" type="range" min="2005" max="2015" value="2005" step="1" list="steplist"/>
-				</li>
-				<li>
-					<span  id="range">2005</span>
-				</li>
-			</ul>
-			<div class="row text-center">
-				<svg id="timelineBar" class="col-sm-12 col-md-12 text-center" ></svg>
-			</div>
-			<!--<hr style="border: none; height: 1px; color: blue; background: blue;"/>-->
-			<datalist id="steplist">
-    			<option>2005</option>
-    			<option>2006</option>
-    			<option>2007</option>
-    			<option>2008</option>
-    			<option>2009</option>
-    			<option>2010</option>
-    			<option>2011</option>
-    			<option>2012</option>
-    			<option>2013</option>
-    			<option>2014</option>
-    			<option>2015</option>
-			</datalist>
-			
-			
-		</div>
-		
-		<div class="col-sm-3 col-md-3 text-center">
-			
-		</div>
-	</div>
-	
-	</div>	
-		<!--<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>-->
-	</section><!-- cd-section -->
+    <section class="slide">
+      <img src="_01_v2.jpg" alt="Slide 01" style="width:100%; height:100%;">
+    </section>
 
-	<!--<section id="section3" class="cd-section">-->
-	<!--	<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>-->
-	<!--</section><!-- cd-section -->
+    <section class="slide">
+      <img src="_02.jpg" alt="Slide 02" style="width:100%; height:100%;">
+    </section>
 
-	<!--<section id="section4" class="cd-section">-->
-	<!--	<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>-->
-	<!--</section><!-- cd-section -->
-
-	<section id="section4" class="cd-section">
-		<!--<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>-->
-		<div class="container-fluid">
+    <section class="slide">
+      <img src="_03.jpg" alt="Slide 03" style="width:100%; height:100%;">
+    </section>
     
-    <div id="map"></div>
+    <section class="slide">
+      <img src="_04.jpg" alt="Slide 04" style="width:100%; height:100%;">
+    </section>
+
+    <section class="slide">
+      <img src="_05.jpg" alt="Slide 05" style="width:100%; height:100%;">
+    </section>
     
-    <div id="map1topBar" class="row">
-        <!--<div class="col-sm-6 col-md-6">-->
-            <!--<h3 id="map1heading" class="col-sm-12 col-md-12 text-center"> Collateral Consequences: </h3>-->
-            <h3 id="map1subHeading" class="col-sm-12 col-md-12 text-center">Collateral Consequences: Residence and Employment Restrictions</h3>
-        <!--</div>-->
-        <!--<p  id="map1context" class="col-sm-6 col-md-6">Lorem ipsum dolor sit amet, Proin id auctor tellus. at pretium nisi. Integer rutrum vitae augue quis sodales. Donec porta enim in orci euismod varius. Donec felis enim, suscipit sed risus id, volutpat convallis nunc. Vestibulum ornare auctor fringilla. Aliquam posuere, odio ut blandit malesuada, enim sem rhoncus arcu, sit amet malesuada lacus orci et urna. Donec nulla elit, consequat varius urna eget, mattis scelerisque magna. Vestibulum ac diam posuere, iaculis odio vel, luctus eros.</p>    -->
-    </div>
+    <section class="slide">
+      <img src="_06.jpg" alt="Slide 06" style="width:100%; height:100%;">
+    </section>
+
+    <section class="slide">
+      <img src="_07.jpg" alt="Slide 07" style="width:100%; height:100%;">
+    </section>
+
+    <section class="slide">
+      <img src="_08.jpg" alt="Slide 08" style="width:100%; height:100%;">
+    </section>
     
-    <div id="map1bottomBar" class="row">
-        <div id="map1bottomBar01" class="col-sm-3 col-md-3 text-center map1bottomBar">
-            <p class="col-sm-12 col-md-12 text-center" > In <br> <span id="neighborhoodName"> Neighborhood </span></p>  
-        </div>
-        <div id="map1bottomBar02" class="col-sm-3 col-md-3 text-center map1bottomBar">
-           <p class="col-sm-12 col-md-12 text-center"> <span id="resPercent"> 34 </span>% <br>of residential land-use area</p> 
-        </div>
-        <div id="map1bottomBar03" class="col-sm-3 col-md-3 text-center map1bottomBar">
-           <p class="col-sm-12 col-md-12 text-center"> and <span id="empPercent"> 60 </span>%<br> of employment land-use area</p>  
-        </div>
-        <div id="map1bottomBar04" class="col-sm-3 col-md-3 text-center map1bottomBar">
-            <p class="col-sm-12 col-md-12 text-center"> is prohibited to registered sex offenders.</p>  
-        </div>
-    </div>
+    <section class="slide">
+      <img src="_09.jpg" alt="Slide 09" style="width:100%; height:100%;">
+    </section>
 
-</div>
-
-	</section><!-- cd-section -->
-
-	<section id="section6" class="cd-section">
-		<!--<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam, totam iusto officia earum perferendis, culpa ad atque eveniet praesentium nobis expedita similique beatae tenetur. Distinctio vel tenetur, id cum.&rdquo;</p>-->
-
-	<div id="map2Container">
-    <div id='map2'></div>
-    <div id="sideBar2">
-        <img id="empLayerIcon" src="img/empLayerIcon.png" alt="emp layer icon" style="cursor:pointer">
-        <img id="resLayerIcon" src="img/resLayeIcon.png" alt="res layer icon" style="cursor:pointer">
-    </div>
-        <div id="violationsPlaceholder"></div>
-    <div id="head2Container">
-        <div class="text-center">
-            <h2 id="map2header">Mobility and Presence Restrictions</h2>
-          <!--<h1>My First Bootstrap Page</h1>-->
-          <!--<p>Resize this responsive page to see the effect!</p> -->
-        </div>
-    </div>
+    <section class="slide">
+      <img src="_10.jpg" alt="Slide 10" style="width:100%; height:100%;">
+    </section>
     
-</div>
-	</section>
-	<!-- cd-section -->
+    <section class="slide">
+      <img src="_11.jpg" alt="Slide 11" style="width:100%; height:100%;">
+    </section>
+    
+    <section class="slide">
+      <img src="_12.jpg" alt="Slide 12" style="width:100%; height:100%;">
+    </section>
 
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/main.js"></script> <!-- Resource jQuery -->
+    <!-- End slides. -->
+
+    <!-- Begin extension snippets. Add or remove as needed. -->
+
+    <!-- deck.navigation snippet -->
+    <!--<div aria-role="navigation">-->
+      <!--<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>-->
+      <!--<a href="#" class="deck-next-link" title="Next">&#8594;</a>-->
+    <!--</div>-->
+
+    <!-- deck.status snippet -->
+    <!--<p class="deck-status" aria-role="status">-->
+      <!--<span class="deck-status-current"></span>-->
+      <!--/-->
+      <!--<span class="deck-status-total"></span>-->
+    <!--</p>-->
+
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
+    </form>
+
+    <!-- End extension snippets. -->
+  </div>
+
+<!-- Required JS files. -->
+<script src="deck.js-latest/jquery.min.js"></script>
+<script src="deck.js-latest/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck.js-latest/extensions/menu/deck.menu.js"></script>
+<script src="deck.js-latest/extensions/goto/deck.goto.js"></script>
+<script src="deck.js-latest/extensions/status/deck.status.js"></script>
+<script src="deck.js-latest/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js-latest/extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
 </body>
 </html>

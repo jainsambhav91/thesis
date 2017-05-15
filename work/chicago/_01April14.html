@@ -41,7 +41,7 @@
          position:absolute; bottom:0; background-color: #f6f6f4; box-shadow: -3px -1px 2px #b3b3b3; z-index: 100; width: 100%;  font-family: 'Chivo', sans-serif; 
         }
         #instructions{
-           font-family: 'Chivo', sans-serif; color: #adadad;
+           font-family: 'Chivo', sans-serif; color: #CF4647; margin-top: 10px;
         }
         
         /*#map2bottomBarTop{*/
@@ -77,7 +77,7 @@
     }
     #map2bottomBarIcons{
         z-index: 10;
-        margin-top: 39%;
+        margin-top: 41%;
     
     }
     
@@ -212,7 +212,28 @@
       bottom: -110px;
     }
     
+    #possViolations{
+        font-family: 'Libre Baskerville', serif;
+        font-family: 'Chivo', sans-serif;
+        color: #CF4647;
+        font-size: 270%; 
+    }
+    #schoolsNo{
+        font-family: 'Libre Baskerville', serif;
+        font-family: 'Chivo', sans-serif;
+        color: #CF4647;
+        font-size: 270%; 
+    }
+    #parksNo{
+        font-family: 'Libre Baskerville', serif;
+        font-family: 'Chivo', sans-serif;
+        color: #CF4647;
+        font-size: 270%; 
+    }
 
+    #text2{
+        margin-top: 30px;
+    }
 
 </style>
 
@@ -297,7 +318,7 @@
                 <p class="col-sm-12 col-md-12 text-center"> <span id="possViolations"></span> <br> posible violations</p>
             </div>
             <div id="map2bottomBar02" class="col-sm-3 col-md-3 text-center map2bottomBar">
-                <p class="col-sm-12 col-md-12 text-center"> from origin to <br> destination, including</p>
+                <p id="text2" class="col-sm-12 col-md-12 text-center"> from origin to <br> destination, including</p>
             </div>
             <div id="map2bottomBar03" class="col-sm-3 col-md-3 text-center map2bottomBar">
                 <p class="col-sm-12 col-md-12 text-center"> <span id="schoolsNo"></span> <br> SCHOOLS and</p>
@@ -391,7 +412,7 @@ map2.on('load', function() {
         'layout': {},
         'paint': {
             'fill-color': 'gray',
-            'fill-opacity': 0.6
+            'fill-opacity': 0.3
         }
     });
     
@@ -406,7 +427,35 @@ map2.on('load', function() {
         'layout': {},
         'paint': {
             'fill-color': 'gray',
-            'fill-opacity': 0.6
+            'fill-opacity': 0.3
+        }
+    });
+    
+    map2.addLayer({
+        "id": "restriction-lines-schools",
+        "type": "line",
+        'source': {
+            'type': 'geojson',
+            'data': schools_display
+        },
+        "layout": {},
+        "paint": {
+            "line-color": "gray",
+            "line-width": 0.5
+        }
+    });
+    
+    map2.addLayer({
+        "id": "restriction-lines-parks",
+        "type": "line",
+        'source': {
+            'type': 'geojson',
+            'data': parks_display
+        },
+        "layout": {},
+        "paint": {
+            "line-color": "gray",
+            "line-width": 0.5
         }
     });
 
@@ -440,7 +489,7 @@ map2.setPaintProperty('residential-raw', 'fill-opacity', 0)
         "type": "circle",
         "paint": {
             "circle-radius": 7,
-            "circle-color": "#ff4f72"
+            "circle-color": "#CF4647"
         }
     });
     
@@ -450,7 +499,7 @@ map2.setPaintProperty('residential-raw', 'fill-opacity', 0)
         "type": "circle",
         "paint": {
             "circle-radius": 7,
-            "circle-color": "#ff4f72"
+            "circle-color": "#CF4647"
         }
     });
    
@@ -571,7 +620,7 @@ function drawLine(){
             "line-cap": "round"
         },
         "paint": {
-            "line-color": "#ff4f72",
+            "line-color": "#CF4647",
             "line-width": 3
         }
     });
@@ -667,7 +716,7 @@ var conflictingSchools = [];
             'layout': {},
             'paint': {
                 "circle-radius": 4,
-                "circle-color": "#f13a5f"
+                "circle-color": "#CF4647"
             }
         });
 
@@ -684,7 +733,7 @@ var conflictingSchools = [];
             'layout': {},
             'paint': {
                 "circle-radius": 4,
-                "circle-color": "#f13a5f"
+                "circle-color": "#CF4647"
             }
         });
         
@@ -767,6 +816,10 @@ var conflictingSchools = [];
     
     $('#firstGeoCoder').remove();
     $('#secondGeoCoder').remove();    
+    
+    $("#possViolations").text(possibleViolationsNew);
+    $("#schoolsNo").text(conflictingSchools.length);
+    $("#parksNo").text(conflictingParks.length);
     
     // var pv = document.getElementById('violationsPlaceholder');
     // pv.innerHTML = '<p><strong>' + possibleViolations + '</strong></p><p> possible violations </p> <br>  ' + possibleViolationsNew;

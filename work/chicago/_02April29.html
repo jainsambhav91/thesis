@@ -122,6 +122,43 @@
             /*border-bottom-color: red;*/
         }
         
+        #map2bottomBarIcons{
+        z-index: 10;
+        margin-top: 44%;
+    
+    }
+    
+    #empLayerIcon {
+        background-image: url("icons/empLayerIcon.png");
+        background-size: 100% 100%;
+        width: 30px;
+        height: 30px;
+        /*margin-top: 200px;*/
+        margin-left: 20px;
+        z-index: 10;
+        float: right;
+        border-style: solid;
+        border-radius: 15px;
+        border-width: 3px;
+        border-color: gray;
+        
+    }
+    
+    #resLayerIcon {
+        background-image: url("icons/resLayeIcon.png");
+        background-size: 100% 100%;
+        width: 30px;
+        height: 30px;
+        float: right;
+        /*margin-top: 200px;*/
+        margin-left: 20px;
+        z-index: 10;
+        border-style: solid;
+        border-radius: 15px;
+        border-width: 3px;
+        border-color: gray;
+    }
+        
        
         
     </style>
@@ -175,6 +212,11 @@
         <!--<p  id="map1context" class="col-sm-6 col-md-6">Lorem ipsum dolor sit amet, Proin id auctor tellus. at pretium nisi. Integer rutrum vitae augue quis sodales. Donec porta enim in orci euismod varius. Donec felis enim, suscipit sed risus id, volutpat convallis nunc. Vestibulum ornare auctor fringilla. Aliquam posuere, odio ut blandit malesuada, enim sem rhoncus arcu, sit amet malesuada lacus orci et urna. Donec nulla elit, consequat varius urna eget, mattis scelerisque magna. Vestibulum ac diam posuere, iaculis odio vel, luctus eros.</p>    -->
     </div>
     
+    <div id="map2bottomBarIcons" class="col-sm-12 col-md-12 text-center">
+        <div id="empLayerIcon"  data-toggle="tooltip" title="Employment Land-use Area" data-placement="top" style="cursor:pointer"></div>
+        <div id="resLayerIcon"  data-toggle="tooltip" title="Residential Land-use Area" data-placement="top" style="cursor:pointer"></div>
+    </div>
+    
     <div id="map1bottomBarBehind" class="row">
             <p  id="instructions" class="col-sm-12 col-md-12 text-center" >Click on a neighborhood to explore.</p>  
     </div>
@@ -211,6 +253,46 @@ var map = new mapboxgl.Map({
 
 var parksBuffer = turf.buffer(parks, 500, 'feet'); 
 
+
+$('[data-toggle="tooltip"]').tooltip();
+// Event listeners
+var empShown = false;
+
+$('#empLayerIcon').click(function() { 
+    if(map.getZoom() < 13){ empShown = false; }
+    
+    if(empShown == false){
+    map.setPaintProperty('chicago-employment-epsg', 'fill-opacity', 1)
+    if(map.getZoom() < 13){map.setZoom(13);}
+    document.getElementById("empLayerIcon").style.borderColor = "#fb3335";
+    empShown = !empShown;
+    }
+    else{
+    map.setPaintProperty('chicago-employment-epsg', 'fill-opacity', 0)
+    document.getElementById("empLayerIcon").style.borderColor = "gray";
+    if(map.getZoom() < 13){map.setZoom(13);}
+    empShown = !empShown;
+    }
+});
+
+var resShown = false;
+
+$('#resLayerIcon').click(function() { 
+    if(map.getZoom() < 13){ resShown = false; }
+    
+    if(resShown == false){
+    map.setPaintProperty('residential-raw', 'fill-opacity', 1)
+    if(map.getZoom() < 13){map.setZoom(13);}
+    document.getElementById("resLayerIcon").style.borderColor = "#fb3335";
+    resShown = !resShown;
+    }
+    else{
+    map.setPaintProperty('residential-raw', 'fill-opacity', 0)
+    document.getElementById("resLayerIcon").style.borderColor = "gray";
+    if(map.getZoom() < 13){map.setZoom(13);}
+    resShown = !resShown;
+    }
+});
 
 
 map.on('load', function () {
@@ -319,6 +401,9 @@ map.on('load', function () {
         "filter": ["==", "PRI_NEIGH", ""]
     });
     
+    $("#empLayerIcon").hide();
+    $("#resLayerIcon").hide();
+    
     // map.addLayer({
     //     "id": "neighborhood-fills-hover-other",
     //     "type": "fill",
@@ -346,6 +431,8 @@ map.on('load', function () {
     }else{
     $("#map1bottomBarBehind").remove();
     $('#map1bottomBar').fadeIn(); 
+    $("#empLayerIcon").show();
+    $("#resLayerIcon").show();
 
     }
     
@@ -366,7 +453,9 @@ map.on('load', function () {
         
         
         if(map.getZoom() < 13){
-            
+        
+        $("#empLayerIcon").hide();
+        $("#resLayerIcon").hide();    
         $('#map1bottomBar').fadeOut();    
         popup.setLngLat(e.lngLat)
             .setText(e.features[0].properties.PRI_NEIGH)
@@ -385,6 +474,8 @@ map.on('load', function () {
         }
         
         if(map.getZoom() >= 13){
+            $("#empLayerIcon").show();
+            $("#resLayerIcon").show();
             
             $("#map1bottomBarBehind").remove();
             $('#map1bottomBar').fadeIn();
