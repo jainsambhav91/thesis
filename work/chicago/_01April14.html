@@ -6,44 +6,57 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://fonts.googleapis.com/css?family=Chivo" rel="stylesheet">
     <style>
-        body { margin:0; padding:0; }
+        /*body { margin:0; padding:0; }*/
         /*#map { position:absolute; top:0; bottom:0; width:100%; }*/
     </style>
 </head>
 <body>
 
 <style>
-    .calculation-box {
-        height: 140px;
-        width: 150px;
-        position: absolute;
-        top: 210px;
-        left: 10px;
-        background-color: rgba(255, 255, 255, .9);
-        padding: 15px;
-        text-align: center;
-    }
-
-    #calculate {
-        min-height: 20px;
-        background-color: #3887be;
-        color: #fff;
-        font-family: 'Open Sans';
-        border-radius: 5px;
-        padding: 10px;
-        cursor: pointer;
-        margin: 10px 0;
-    }
-    #map{
-        height: 500px;
-        width: 900px;
-    }
-    
-    #map2Container{
-        position: relative;
         
-    }
+    body { margin:0; padding:0; }    
+        
+     #map2 { position:absolute; top:0; bottom:0; left:0; width:100%; z-index:1; }
+        #map2topBar {
+            position: absolute;
+            background-color: #2c2c2c;
+            z-index: 3; 
+            width: 100%;
+            padding-top: 0px; 
+            padding-bottom: 0px;
+        }
+        #map2bottomBarCheck{
+         position:absolute; 
+         bottom:0;  
+         background-color: #f6f6f4;
+         z-index: 3; 
+         width: 100%; 
+         padding-top: 1%; 
+         box-shadow: -3px -1px 2px #b3b3b3; 
+         transition: all 0.3s ease-in-out;
+        }
+        #map2bottomBarBehind{
+         position:absolute; bottom:0; background-color: #f6f6f4; box-shadow: -3px -1px 2px #b3b3b3; z-index: 100; width: 100%;  font-family: 'Chivo', sans-serif; 
+        }
+        #instructions{
+           font-family: 'Chivo', sans-serif; color: #adadad;
+        }
+        
+        /*#map2bottomBarTop{*/
+        /* position:absolute;  background-color: #f6f6f4; z-index: 2; width: 100%; padding-top: 1%;*/
+        /*}*/
+        #map2heading {
+             color: #f6f6f4; font-family: 'Chivo', sans-serif; margin-bottom: 0px; margin-top: 20px;
+        }
+        #map2subHeading {
+             color: #f6f6f4; font-family: 'Chivo', sans-serif; margin-bottom: 20px; margin-top: 20px;
+        }    
+
+    /*#map2Container{*/
+    /*    position: relative;*/
+    /*}*/
     
     #head2Container {
         background-color: #2c2c2c;
@@ -62,19 +75,41 @@
         margin-left: 80%;
         
     }
+    #map2bottomBarIcons{
+        z-index: 10;
+        margin-top: 39%;
+    
+    }
     
     #empLayerIcon {
+        background-image: url("icons/empLayerIcon.png");
+        background-size: 100% 100%;
         width: 30px;
         height: 30px;
-        margin-top: 600px;
-        margin-left: 50px;
+        /*margin-top: 200px;*/
+        margin-left: 20px;
+        z-index: 10;
+        float: right;
+        border-style: solid;
+        border-radius: 15px;
+        border-width: 3px;
+        border-color: gray;
+        
     }
     
     #resLayerIcon {
+        background-image: url("icons/resLayeIcon.png");
+        background-size: 100% 100%;
         width: 30px;
         height: 30px;
-        margin-top: 600px;
-        margin-left: 100px;
+        float: right;
+        /*margin-top: 200px;*/
+        margin-left: 20px;
+        z-index: 10;
+        border-style: solid;
+        border-radius: 15px;
+        border-width: 3px;
+        border-color: gray;
     }
     
     #violationsPlaceholder{
@@ -88,23 +123,23 @@
         
        /*float: left;*/
        /*position: absolute;*/
-       font-size: 95%;
-       font-family: 'Libre Baskerville', serif;
+       font-size: 150%;
+       font-family: 'Chivo', sans-serif;
        color: #f6f6f4;
        /*margin-left: 80px;*/
     }
     
     
-    #map2{
-        float: left;
-        height: 650px;
-        width: 100%;
-    }
+    /*#map2{*/
+    /*    float: left;*/
+    /*    height: 650px;*/
+    /*    width: 100%;*/
+    /*}*/
     
    
     
     p {
-        font-family: 'Open Sans';
+        font-family: 'Chivo', sans-serif;
         margin: 0;
         font-size: 13px;
     }
@@ -120,22 +155,27 @@
     
     #firstGeoCoder{
         position: absolute;
-        margin: 90px 0 0 80px;
+        margin: 20% 0 0 20%;
         float: left;
-        opacity: 0.8;
-        /*border-color: white; */
-        background-color: #e6e6e6;
-        max-width: 200px;
+        opacity: 0.95;
+        border-color: red; 
+        background-color: #f2f2f2;
+        max-width: 370px;
+        font-family: "chivo", sans-serif;
+        color: #f2f2f2;
     }
     
     #secondGeoCoder{
         position: absolute;
-        margin: 90px 0 0 400px;
+        margin: 20% 0 0 50%;
         float: left;
-        opacity: 0.8;
-        /*border-color: white; */
-        background-color: #e6e6e6;
-        max-width: 200px;
+        opacity: 0.95;
+        border-color: #3a3a3a; 
+        background-color: #f2f2f2;
+        max-width: 370px;
+        font-family: "chivo", sans-serif;
+        font-size: 20px;
+        color: #f2f2f2;
     }
     
     
@@ -163,6 +203,14 @@
        margin: 90px 0 0 10px; 
     }
     
+    #routeLine{
+        width: 60%;
+        height: 50px
+    }
+    
+    .bottom {
+      bottom: -110px;
+    }
     
 
 
@@ -171,11 +219,6 @@
 <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.17.0/mapbox-gl-draw.js'></script>
 <script type="text/javascript" src="chicago_basemap_april14.js"></script>
-<!--<script type="text/javascript" src="parks_april14.js"></script>-->
-<!--<script type="text/javascript" src="parks_april14_buffer_epsg.js"></script>-->
-<!--<script type="text/javascript" src="parks_april14_buffer_dissolved_epsg.js"></script>-->
-<!--<script type="text/javascript" src="schools_check2.js"></script>-->
-<!--<script type="text/javascript" src="schools_check_april25.js"></script>-->
 
 
 <!-- Maps to display, MAP 2 -->
@@ -187,9 +230,12 @@
 <script type="text/javascript" src="schools_area_buffer_simplified_epsg.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 
 <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script> 
 
@@ -202,216 +248,88 @@
 <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700" rel="stylesheet">
 
 
-
-
-<!--<h2>Map 1: Residence and Employment Restrictions</h2>-->
-
-<!--<div id='map' onmouseup="recalculate()"></div>-->
-
-<!--<div class='calculation-box'>-->
-<!--    <p>Draw a polygon using the draw tools.</p>-->
-<!--    <div id='calculate' class='button button'>Calculate area</div>-->
-<!--    <div id='calculated-area'></div>-->
-<!--</div>-->
-
-<!--<h3>check</h3>-->
-<div id="map2Container">
-    <div id='map2'></div>
-    <div id="sideBar2">
-        <img id="empLayerIcon" src="icons/empLayerIcon.png" alt="emp layer icon" style="cursor:pointer">
-        <img id="resLayerIcon" src="icons/resLayeIcon.png" alt="res layer icon" style="cursor:pointer">
-    </div>
-        <div id="violationsPlaceholder"></div>
-    <div id="head2Container">
-        <div class="text-center">
-            <h2 id="map2header">Mobility and Presence Restrictions</h2>
+<!--<div id="map2Container">-->
+<!--    <div id='map2'></div>-->
+<!--    <div id="sideBar2">-->
+        <!--    </div>-->
+<!--        <div id="violationsPlaceholder"></div>-->
+<!--    <div id="head2Container">-->
+<!--        <div class="text-center">-->
+<!--            <h2 id="map2header">Collateral Consequences: Mobility and Presence Restrictions</h2>-->
           <!--<h1>My First Bootstrap Page</h1>-->
           <!--<p>Resize this responsive page to see the effect!</p> -->
+<!--        </div>-->
+<!--    </div>-->
+    
+<!--</div>-->
+
+
+
+<!--#############################-->
+<!--Similar to map 1 -->
+<!--#############################-->
+
+
+
+<div id="map2Container" class="container-fluid">
+    
+    <div id="map2"></div>
+    
+    <div id="map2topBar" class="row">
+        <h3 id="map2subHeading" class="col-sm-12 col-md-12 text-center">Collateral Consequences: Mobility and Presence Restrictions</h3>
+    </div>
+        <div id="map2bottomBarIcons" class="col-sm-12 col-md-12 text-center">
+            <div id="empLayerIcon"  data-toggle="tooltip" title="Employment Land-use Area" data-placement="top" style="cursor:pointer"></div>
+            <div id="resLayerIcon"  data-toggle="tooltip" title="Residential Land-use Area" data-placement="top" style="cursor:pointer"></div>
+        </div>
+    
+    <div id="map2bottomBarBehind" class="row">
+            <p  id="instructions" class="col-sm-12 col-md-12 text-center" >Select ORIGIN and DESTINATION to explore possible violations.</p>  
+    </div>
+    <div id ="map2bottomBarCheck" class="row">
+        <div id="map2bottomBarTop" class="col-sm-12 col-md-12 text-center">
+            <svg id="routeLine">
+            </svg>
+        </div>
+        <div id="map2bottomBar" class="row">
+            
+            <div id="map2bottomBar01" class="col-sm-3 col-md-3 text-center map2bottomBar">
+                <p class="col-sm-12 col-md-12 text-center"> <span id="possViolations"></span> <br> posible violations</p>
+            </div>
+            <div id="map2bottomBar02" class="col-sm-3 col-md-3 text-center map2bottomBar">
+                <p class="col-sm-12 col-md-12 text-center"> from origin to <br> destination, including</p>
+            </div>
+            <div id="map2bottomBar03" class="col-sm-3 col-md-3 text-center map2bottomBar">
+                <p class="col-sm-12 col-md-12 text-center"> <span id="schoolsNo"></span> <br> SCHOOLS and</p>
+            </div>
+            <div id="map2bottomBar04" class="col-sm-3 col-md-3 text-center map2bottomBar">
+                <p class="col-sm-12 col-md-12 text-center"> <span id="parksNo"></span> <br> PUBLIC PARKS.</p>
+            </div>
+            
+            <!--<div id="map2bottomBar01" class="col-sm-3 col-md-3 text-center map2bottomBar">-->
+            <!--    <p class="col-sm-12 col-md-12 text-center" > In <br> <span id="neighborhoodName"> Neighborhood </span></p>  -->
+            <!--</div>-->
+            <!--<div id="map2bottomBar02" class="col-sm-3 col-md-3 text-center map2bottomBar">-->
+            <!--   <p class="col-sm-12 col-md-12 text-center"> <span id="resPercent"> 34 </span>% <br>of residential land-use area</p> -->
+            <!--</div>-->
+            <!--<div id="map2bottomBar03" class="col-sm-3 col-md-3 text-center map2bottomBar">-->
+            <!--   <p class="col-sm-12 col-md-12 text-center"> and <span id="empPercent"> 60 </span>%<br> of employment land-use area</p>  -->
+            <!--</div>-->
+            <!--<div id="map2bottomBar04" class="col-sm-3 col-md-3 text-center map2bottomBar">-->
+            <!--    <p class="col-sm-12 col-md-12 text-center"> is prohibited to registered sex offenders.</p>  -->
+            <!--</div>-->
         </div>
     </div>
-    
+
 </div>
+
+
 
 
 <script>
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiamFpbnNhbWJoYXYiLCJhIjoiY2l1aW5uOTZ5MDAwOTJvcGxrMWg4OHUxciJ9.X8mAbHJEKa78PHXfVRK5-Q';
-// /* eslint-disable */
-// var map = new mapboxgl.Map({
-//     container: 'map', // container id
-//     style: 'mapbox://styles/jainsambhav/cj1pghgd300122sp73j3cxiej', //hosted style id
-//     center: [-87.623177, 41.881832], // starting position
-//     zoom: 10 // starting zoom
-// });
-
-
-// map.on('load', function () {
-
-//     map.addLayer({
-//         'id': 'chicago',
-//         'type': 'fill',
-//         'source': {
-//             'type': 'geojson',
-//             'data': chicagoBaseMap
-//         },
-//         'layout': {},
-//         'paint': {
-//             'fill-color': 'gray',
-//             'fill-opacity': 0.1
-//         }
-//     });
-// });
-// // var f1 = totalArea.features;
-// var f1 = chicagoBaseMap.features;
-// // console.log(f1);
-
-// // var parksBuffer = turf.buffer(parks, 500, 'feet');
-// // var parksBufferDissolve = turf.dissolve(parksBuffer);
-
-// map.on('load', function () {
-
-//     map.addLayer({
-//         'id': 'parks',
-//         'type': 'fill',
-//         'source': {
-//             'type': 'geojson',
-//             'data': parksBufferDissolved_epsg
-//         },
-//         'layout': {},
-//         'paint': {
-//             'fill-color': 'black',
-//             'fill-opacity': 0.8,
-//         }
-//     });
-// });
-
-// // var s1 = schools1.features;
-// var s1buffer = turf.buffer(schools1, 500, 'feet');
-
-// map.on('load', function () {
-
-//     map.addLayer({
-//         'id': 'school1',
-//         'type': 'fill',
-//         'source': {
-//             'type': 'geojson',
-//             'data': s1buffer
-//         },
-//         'layout': {},
-//         'paint': {
-//             'fill-color': 'black',
-//             'fill-opacity': 0.2
-//         }
-//     });
-// });
-
-// // var s2buffer = turf.buffer(schools2, 500, 'feet');
-// // map.on('load', function () {
-
-// //     map.addLayer({
-// //         'id': 'school2',
-// //         'type': 'fill',
-// //         'source': {
-// //             'type': 'geojson',
-// //             'data': s2buffer
-// //         },
-// //         'layout': {},
-// //         'paint': {
-// //             'fill-color': 'red',
-// //             'fill-opacity': 0.3
-// //         }
-// //     });
-// // });
-
-// var f2 = parksBufferDissolved_epsg.features;
-
-// var point00 = [0, 0];
-// var point01 = [0, 900];
-// var point11 = [900, 900];
-// var point10 = [900, 0];
-
-// // console.log("North West Point : " + latlngNW);
-// // console.log("South East Point : " + latlngSE);
-
-//     // var bbox = [0, 0, 500, 500];
-
-// // var draw = new MapboxDraw({
-// //     displayControlsDefault: false,
-// //     controls: {
-// //         polygon: true,
-// //         trash: true
-// //     }
-// // });
-// // map.addControl(draw);
-
-// function recalculate() {
-//     var latlng00 = map.unproject(point00);
-//     var latlng01 = map.unproject(point01);
-//     var latlng11 = map.unproject(point11);
-//     var latlng10 = map.unproject(point10);
-    
-
-//     var bbox = {
-//                   "type": "Polygon",
-//                   "coordinates": [
-//                     [
-//                       [latlng00.lng, latlng00.lat],
-//                       [latlng01.lng, latlng01.lat],
-//                       [latlng11.lng, latlng11.lat],
-//                       [latlng10.lng, latlng10.lat],
-//                       [latlng00.lng, latlng00.lat]
-//                     ]
-//                   ]
-//                 }
-
-//         // console.log(bbox);
-    
-//         var data = turf.featureCollection(bbox);
-//         // console.log(data);
-        
-//         // var dissolvedData = turf.dissolve(data);
-//         // console.log(dissolved);
-        
-        
-//         conflictlist1 = [];
-//         conflictlist2 = [];
-
-//         for (var i = 0; i < f1.length; i++) {
-//             var parcel1 = f1[i];
-        
-//                     var conflict = turf.intersect(parcel1.geometry, data.features);
-//                     if (conflict != null) {
-//                         conflictlist1.push(conflict);
-//             }
-//         }
-        
-//         for (var i = 0; i < f2.length; i++) {
-//             var parcel2 = f2[i];
-
-//                     var conflict2 = turf.intersect(parcel2.geometry, data.features);
-//                     if (conflict2 != null) {
-//                         conflictlist2.push(conflict2);
-//                     }
-//         }
-        
-        
-//         var intersectionBase = turf.featureCollection(conflictlist1);
-//         var intersectionSchool = turf.featureCollection(conflictlist2);
-        
-//         var areaBase = turf.area(intersectionBase);
-//         var areaSchool = turf.area(intersectionSchool);
-        
-//         var rounded_areaBase = Math.round(areaBase*100)/100;
-//         var rounded_areaSchool = Math.round(areaSchool*100)/100; 
-        
-//         var answer = document.getElementById('calculated-area');
-//         var percentage = parseInt((rounded_areaSchool/rounded_areaBase)*100);
-//         answer.innerHTML = '<p><strong>' + percentage + '</strong></p><p>% Area prohibited</p> <br>  ';
-// }
-
-// var calcButton = document.getElementById('calculate');
-
 
 // *******************************************************
 
@@ -419,7 +337,9 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiamFpbnNhbWJoYXYiLCJhIjoiY2l1aW5uOTZ5MDAwOTJvc
 
 // *******************************************************
 
-
+$("#map2bottomBarCheck").fadeOut();
+$("#empLayerIcon").hide();
+$("#resLayerIcon").hide();
 
 // add mobility and presence restrictions map
 var map2 = new mapboxgl.Map({
@@ -431,8 +351,8 @@ var map2 = new mapboxgl.Map({
     bearing: 20
 });
 
-map2.scrollZoom.disable();
-map2.addControl(new mapboxgl.NavigationControl());
+// map2.scrollZoom.disable();
+// map2.addControl(new mapboxgl.NavigationControl());
 
 
 // source location geocoder
@@ -563,6 +483,7 @@ map2.setPaintProperty('residential-raw', 'fill-opacity', 0)
     
 });
 
+$('[data-toggle="tooltip"]').tooltip();
 // Event listeners
 var empShown = false;
 
@@ -570,12 +491,14 @@ $('#empLayerIcon').click(function() {
     if(map2.getZoom() < 13){ empShown = false; }
     
     if(empShown == false){
-    map2.setPaintProperty('chicago-employment-epsg', 'fill-opacity', 0.4)
+    map2.setPaintProperty('chicago-employment-epsg', 'fill-opacity', 1)
     if(map2.getZoom() < 13){map2.setZoom(13);}
+    document.getElementById("empLayerIcon").style.borderColor = "#fb3335";
     empShown = !empShown;
     }
     else{
     map2.setPaintProperty('chicago-employment-epsg', 'fill-opacity', 0)
+    document.getElementById("empLayerIcon").style.borderColor = "gray";
     if(map2.getZoom() < 13){map2.setZoom(13);}
     empShown = !empShown;
     }
@@ -589,10 +512,12 @@ $('#resLayerIcon').click(function() {
     if(resShown == false){
     map2.setPaintProperty('residential-raw', 'fill-opacity', 1)
     if(map2.getZoom() < 13){map2.setZoom(13);}
+    document.getElementById("resLayerIcon").style.borderColor = "#fb3335";
     resShown = !resShown;
     }
     else{
     map2.setPaintProperty('residential-raw', 'fill-opacity', 0)
+    document.getElementById("resLayerIcon").style.borderColor = "gray";
     if(map2.getZoom() < 13){map2.setZoom(13);}
     resShown = !resShown;
     }
@@ -608,8 +533,15 @@ $(".mapboxgl-ctrl-geocoder.mapboxgl-ctrl").first().attr('id',   "firstGeoCoder")
 $(".mapboxgl-ctrl-geocoder.mapboxgl-ctrl:eq(1)").attr('id',   "secondGeoCoder")
 $(".mapboxgl-ctrl-group ").attr('id', "zoomButtons")
 
+// $('#map2bottomBarCheck').toggleClass('bottom');
+
 function drawLine(){
     
+    $("#map2bottomBarBehind").remove();
+    $("#map2bottomBarCheck").fadeIn();
+    $("#empLayerIcon").show();
+    $("#resLayerIcon").show();
+
     var lineData = {
                 "type": "Feature",
                 "properties": {},
@@ -650,7 +582,8 @@ function drawLine(){
         }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
 
         map2.fitBounds(bounds, {
-            padding: 100
+            padding: 100,
+            bearing: 60
         });
         
         
@@ -758,36 +691,94 @@ var conflictingSchools = [];
     var possibleViolations = lineAreaConflictParks.length + lineAreaConflictSchools.length;
     var possibleViolationsNew = conflictingParks.length + conflictingSchools.length;
     
-    var pv = document.getElementById('violationsPlaceholder');
-    pv.innerHTML = '<p><strong>' + possibleViolations + '</strong></p><p> possible violations </p> <br>  ' + possibleViolationsNew;
-     
-    var yCoords = [];
+    var width = window.innerWidth;
     
-    for(var i = 0; i<conflictingSchools.length; i++){
+    
+    
+
+    d3.select("#routeLine")
+        .append("circle")
+        .attr("class", "circ")
+        .attr("cx", 10)
+        .attr("cy", 10)
+        .attr("r", 5)
+        .style("fill", "#b3b3b3");
+    
+    d3.select("#routeLine")
+        .append("circle")
+        .attr("class", "circ")
+        .attr("cx", 0.6*width - 30)
+        .attr("cy", 10)
+        .attr("r", 5)
+        .style("fill", "#b3b3b3");    
         
-    // var point = new mapboxgl.LngLat(-87.62509094503946, 41.800682041690266);
+     d3.select("#routeLine")
+        .append("line")
+        .attr("class", "circ")
+        .attr("x1", 10)
+        .attr("y1", 10)
+        .attr("x2", 0.6*width - 30)
+        .attr("y2", 10)
+        .attr("stroke-width", 2)                        
+        .attr("stroke", "#b3b3b3");
     
-    var point = new mapboxgl.LngLat(conflictingSchools[i].geometry.coordinates[0][0][0], conflictingSchools[i].geometry.coordinates[0][0][1]);
-    
-    var pixelPoint = map2.project(point);
-    yCoords.push(pixelPoint.y);
-    // console.log(pixelPoint);
+    d3.select("#routeLine")
+        .append("text")
+        .attr("class", "circ")
+        .attr("x", 5)
+        .attr("y", 30)
+        .text("ORIGIN")
+        .attr("font-size", "10px")
+        .attr("fill", "#8a8a8a")
+        .attr("font-family", "'Chivo', sans-serif");
         
-    }    
-    
-    console.log(yCoords);    
+    d3.select("#routeLine")
+        .append("text")
+        .attr("class", "circ")
+        .attr("x", 0.6*width - 90)
+        .attr("y", 30)
+        .text("DESTINATION")
+        .attr("font-size", "10px")
+        .attr("fill", "#8a8a8a")
+        .attr("font-family", "'Chivo', sans-serif");
         
-    // console.log(centroidPt.length);
-    // console.log(centroidPt2.length);
-    // console.log(possibleViolations);
+    d3.select("#routeLine")
+        .append("text")
+        .attr("class", "circ")
+        .attr("x", 0.3*width - 60)
+        .attr("y", 30)
+        .text("POSSIBLE VIOLATIONS")
+        .attr("font-size", "10px")
+        .attr("fill", "#2b2b2b")
+        .attr("font-family", "'Chivo', sans-serif");    
+    
+    
+    d3.selectAll(".circMid").remove();
+    
+    for(var i=1; i<=possibleViolationsNew; i++){
+        d3.select("#routeLine")
+        .append("circle")
+        .attr("class", "circMid")
+        .attr("cx", (i*(0.6*width - 30))/(possibleViolationsNew+1))
+        .attr("cy", 10)
+        .attr("r", 3)
+        .style("fill", "#727272");
+    }
+    
+    $('#firstGeoCoder').remove();
+    $('#secondGeoCoder').remove();    
+    
+    // var pv = document.getElementById('violationsPlaceholder');
+    // pv.innerHTML = '<p><strong>' + possibleViolations + '</strong></p><p> possible violations </p> <br>  ' + possibleViolationsNew;
+    
+    
     
 }
 
-
-
-
-
+    
+    
 </script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 
 </body>
 </html>

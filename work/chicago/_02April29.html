@@ -19,41 +19,115 @@
             padding-bottom: 0px;
         }
         #map1bottomBar{
-         position:absolute; bottom:0; background-color: #f6f6f4; z-index: 2; width: 100%; padding-top: 1%;
+         position:absolute; bottom:0; background-color: #f6f6f4;  z-index: 2; width: 100%; box-shadow: -3px -1px 2px #b3b3b3; padding-top: 1%; 
+        }
+        
+        #map1bottomBarBehind{
+         position:absolute; bottom:0; background-color: #f6f6f4; box-shadow: -3px -1px 2px #b3b3b3; z-index: 100; width: 100%; padding-top: 1%; 
+        }
+        
+        #instructions{
+           font-family: 'Chivo', sans-serif; color: #CF4647;
         }
         #map1heading {
-             color: #f6f6f4; font-family: 'Libre Baskerville', serif; margin-bottom: 0px; margin-top: 20px;
+             color: #f6f6f4; font-family: 'Libre Baskerville', serif; font-family: 'Chivo', sans-serif; margin-bottom: 0px; margin-top: 20px;
         }
         #map1subHeading {
-             color: #f6f6f4; font-family: 'Libre Baskerville', serif; margin-bottom: 20px; margin-top: 20px;
+             color: #f6f6f4; font-family: 'Libre Baskerville', serif; font-family: 'Chivo', sans-serif; margin-bottom: 20px; margin-top: 20px;
         }
         #map1context {
-            color: #f6f6f4; font-size: 73%; font-family: 'Libre Baskerville'; margin-top: 10px; margin-bottom: 10px;
+            color: #f6f6f4; font-size: 73%; font-family: 'Libre Baskerville'; font-family: 'Chivo', sans-serif; margin-top: 10px; margin-bottom: 10px;
         }
         
         #neighborhoodName {
             font-family: 'Libre Baskerville', serif;
-            color: #e82c51;
-            font-size: 150%;
+            font-family: 'Chivo', sans-serif;
+            color: #CF4647;
+            font-size: 200%;
         }
         #resPercent {
            font-family: 'Libre Baskerville', serif;
-           color: #e82c51;
-           font-size: 170%; 
+           font-family: 'Chivo', sans-serif;
+           color: #CF4647;
+           font-size: 270%; 
         }
         #empPercent {
            font-family: 'Libre Baskerville', serif;
-           color: #e82c51;
-           font-size: 170%; 
+           font-family: 'Chivo', sans-serif;
+           color: #CF4647;
+           font-size: 270%; 
         }
         
-        #map1bottomBar01 {font-family: 'Libre Baskerville', serif; font-size: 90%;}
-        #map1bottomBar02 {font-family: 'Libre Baskerville', serif; font-size: 90%;}
-        #map1bottomBar03 {font-family: 'Libre Baskerville', serif; font-size: 90%;}
-        #map1bottomBar04 {font-family: 'Libre Baskerville', serif; font-size: 90%;}
+        #map1bottomBar01 {font-family: 'Libre Baskerville', serif; font-family: 'Chivo', sans-serif; font-size: 120%; text-align: center; vertical-align: middle; 
+    margin-top: 20px;}
+/*left: 50%;*/
+/*transform: translate(-50%, -50%);}*/
+        #map1bottomBar02 {font-family: 'Libre Baskerville', serif; font-family: 'Chivo', sans-serif; font-size: 120%; text-align: center; vertical-align: middle; top: 50%;}
+        #map1bottomBar03 {font-family: 'Libre Baskerville', serif; font-family: 'Chivo', sans-serif; font-size: 120%; text-align: center; vertical-align: middle; top: 50%;}
+        #map1bottomBar04 {font-family: 'Libre Baskerville', serif; font-family: 'Chivo', sans-serif; font-size: 120%; text-align: center; vertical-align: middle; top: 50%; margin-top: 40px;}
+        
+         .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+            padding-bottom: 10px;
+            font-family: 'Chivo', sans-serif;
+            /*background: gray;*/
+            border-left-color: #333333 !important;
+        }
+        .mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+            padding-bottom: 10px;
+            font-family: 'Chivo', sans-serif;
+            /*background: gray;*/
+            border-right-color: #333333 !important;
+        }
+        .mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+            padding-bottom: 10px;
+            font-family: 'Chivo', sans-serif;
+            /*background: gray;*/
+            border-bottom-color: #333333 !important;
+        }
+        .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+            padding-bottom: 10px;
+            font-family: 'Chivo', sans-serif;
+            /*background: gray;*/
+            border-top-color: #333333 !important;
+        }
+        
+        
+        
+        .mapboxgl-popup-anchor-right .mapboxgl-popup-content {
+            padding-bottom: 10px;
+            font-family: 'Chivo', sans-serif;
+            background: #333333;
+            color: white;
+            /*border-left-color: red;*/
+        }
+        .mapboxgl-popup-anchor-left .mapboxgl-popup-content {
+            padding-bottom: 10px;
+            font-family: 'Chivo', sans-serif;
+            background: #333333;
+            color: white;
+            /*border-left-color: red;*/
+        }
+        .mapboxgl-popup-anchor-top .mapboxgl-popup-content {
+            padding-bottom: 10px;
+            font-family: 'Chivo', sans-serif;
+            background: #333333;
+            color: white;
+            /*border-top-color: red;*/
+        }
+        .mapboxgl-popup-anchor-bottom .mapboxgl-popup-content {
+            padding-bottom: 10px;
+            font-family: 'Chivo', sans-serif;
+            background: #333333;
+            color: white;
+            /*border-bottom-color: red;*/
+        }
+        
+       
+        
     </style>
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
 
 <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
@@ -61,6 +135,10 @@
 <script type="text/javascript" src="chicago_basemap_april14.js"></script>
 <script type="text/javascript" src="parks_april14_buffer_epsg.js"></script>
 <script type="text/javascript" src="schools_area_buffer_epsg.js"></script>
+<!--<script type="text/javascript" src="schools_parks_daycares_dissolved_epsg.js"></script>-->
+<script type="text/javascript" src="schools_daycares_parks_dissolved_final.js"></script>
+
+<script type="text/javascript" src="parks_april14.js"></script>
 <!--<script type="text/javascript" src="parks_april14.js"></script>-->
 <!--<script type="text/javascript" src="parks_april14_buffer_epsg.js"></script>-->
 <!--<script type="text/javascript" src="parks_april14_buffer_dissolved_epsg.js"></script>-->
@@ -69,7 +147,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script> 
@@ -77,10 +154,13 @@
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.17.0/mapbox-gl-draw.css' type='text/css'/>
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css' type='text/css' />
-<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
-<!--<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.1/mapbox-gl-directions.js'></script>-->
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
+    <!--<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.1/mapbox-gl-directions.js'></script>-->
 
 <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Chivo" rel="stylesheet">
 
 <!--html body here-->
 <div class="container-fluid">
@@ -95,18 +175,21 @@
         <!--<p  id="map1context" class="col-sm-6 col-md-6">Lorem ipsum dolor sit amet, Proin id auctor tellus. at pretium nisi. Integer rutrum vitae augue quis sodales. Donec porta enim in orci euismod varius. Donec felis enim, suscipit sed risus id, volutpat convallis nunc. Vestibulum ornare auctor fringilla. Aliquam posuere, odio ut blandit malesuada, enim sem rhoncus arcu, sit amet malesuada lacus orci et urna. Donec nulla elit, consequat varius urna eget, mattis scelerisque magna. Vestibulum ac diam posuere, iaculis odio vel, luctus eros.</p>    -->
     </div>
     
+    <div id="map1bottomBarBehind" class="row">
+            <p  id="instructions" class="col-sm-12 col-md-12 text-center" >Click on a neighborhood to explore.</p>  
+    </div>
     <div id="map1bottomBar" class="row">
         <div id="map1bottomBar01" class="col-sm-3 col-md-3 text-center map1bottomBar">
             <p class="col-sm-12 col-md-12 text-center" > In <br> <span id="neighborhoodName"> Neighborhood </span></p>  
         </div>
         <div id="map1bottomBar02" class="col-sm-3 col-md-3 text-center map1bottomBar">
-           <p class="col-sm-12 col-md-12 text-center"> <span id="resPercent"> 34 </span>% <br>of residential land-use area</p> 
+           <p class="col-sm-12 col-md-12 text-center"> <span id="resPercent"> 34 </span>% <br>of <b>residential</b> land-use area</p> 
         </div>
         <div id="map1bottomBar03" class="col-sm-3 col-md-3 text-center map1bottomBar">
-           <p class="col-sm-12 col-md-12 text-center"> and <span id="empPercent"> 60 </span>%<br> of employment land-use area</p>  
+           <p class="col-sm-12 col-md-12 text-center"> and <span id="empPercent"> 60 </span>%<br> of <b>employment</b> land-use area</p>  
         </div>
         <div id="map1bottomBar04" class="col-sm-3 col-md-3 text-center map1bottomBar">
-            <p class="col-sm-12 col-md-12 text-center"> is prohibited to registered sex offenders.</p>  
+            <p class="col-sm-12 col-md-12 text-center"> is prohibited from <br> registered sex offenders.</p>  
         </div>
     </div>
 
@@ -126,6 +209,10 @@ var map = new mapboxgl.Map({
     bearing: 60
 });
 
+var parksBuffer = turf.buffer(parks, 500, 'feet'); 
+
+
+
 map.on('load', function () {
 
     map.addLayer({
@@ -137,11 +224,84 @@ map.on('load', function () {
         },
         'layout': {},
         'paint': {
-            'fill-color': 'gray',
-            'fill-opacity': 0.2,
-            'fill-outline-color': 'black'
+            'fill-color': '#f8f8f8',
+            'fill-opacity': 0.1,
+            // 'fill-outline-color': '#e7e7e7'
         }
     });
+    
+    map.addLayer({
+        "id": "neighborhood-lines",
+        "type": "line",
+        'source': {
+            'type': 'geojson',
+            'data': chicagoBaseMap
+        },
+        "layout": {},
+        "paint": {
+            "line-color": "#dedede",
+            "line-width": 2
+        }
+    });
+    
+    map.addLayer({
+        'id': 'all_buffers',
+        'type': 'fill',
+        'source': {
+            'type': 'geojson',
+            'data': all_buffers
+        },
+        'layout': {},
+        'paint': {
+            'fill-color': '#CF4647',
+            'fill-opacity': 0.7
+        }
+    });
+    
+    
+     map.addLayer({
+        'id': 'all_buffers_line',
+        'type': 'line',
+        'source': {
+            'type': 'geojson',
+            'data': all_buffers
+        },
+        'layout': {},
+        'paint': {
+            'line-color': '#CF4647',
+            'line-width': 1.5
+        }
+    });
+    
+    // map.addLayer({
+    //     'id': 'check',
+    //     'type': 'fill',
+    //     'source': {
+    //         'type': 'geojson',
+    //         'data': parksBuffer
+    //     },
+    //     'layout': {},
+    //     'paint': {
+    //         'fill-color': '#E57373',
+    //         'fill-opacity': 0.7
+    //     }
+    // });
+    
+// add schools to map2
+    // map.addLayer({
+    //     'id': 'schools_mobility',
+    //     'type': 'fill',
+    //     'source': {
+    //         'type': 'geojson',
+    //         'data': schools_display
+    //     },
+    //     'layout': {},
+    //     'paint': {
+    //         'fill-color': '#862234',
+    //         'fill-opacity': 0.4
+    //     }
+    // });
+    
     
     map.addLayer({
         "id": "neighborhood-fills-hover",
@@ -152,43 +312,15 @@ map.on('load', function () {
         },
         "layout": {},
         "paint": {
-            "line-color": "#e82c51",
-            "line-width": 1
-        }
-    });
-    
-    map.addLayer({
-        'id': 'parks_mobility',
-        'type': 'fill',
-        'source': {
-            'type': 'geojson',
-            'data': parks_display
+            "line-color": "#585858",
+            "line-width": 3,
+            // 'fill-outline-color': 'black'
         },
-        'layout': {},
-        'paint': {
-            'fill-color': 'gray',
-            'fill-opacity': 0.6
-        }
+        "filter": ["==", "PRI_NEIGH", ""]
     });
-    
-// add schools to map2
-    map.addLayer({
-        'id': 'schools_mobility',
-        'type': 'fill',
-        'source': {
-            'type': 'geojson',
-            'data': schools_display
-        },
-        'layout': {},
-        'paint': {
-            'fill-color': 'gray',
-            'fill-opacity': 0.6
-        }
-    });
-    
     
     // map.addLayer({
-    //     "id": "neighborhood-fills-hover",
+    //     "id": "neighborhood-fills-hover-other",
     //     "type": "fill",
     //     'source': {
     //         'type': 'geojson',
@@ -196,20 +328,108 @@ map.on('load', function () {
     //     },
     //     "layout": {},
     //     "paint": {
-    //         "fill-color": "gray",
-    //         "fill-opacity": 0.6,
-    //         'fill-outline-color': 'black'
+    //         "fill-color": "#fafafa",
+    //         // "line-width": 3,
+    //         // 'fill-outline-color': 'black'
     //     },
     //     "filter": ["==", "PRI_NEIGH", ""]
     // });
     
-    // map.on("click", "chicago", function(e) {
-    //     map.setFilter("neighborhood-fills-hover", ["==", "PRI_NEIGH", e.features[0].properties.PRI_NEIGH]);
-    // });
+    var popup = new mapboxgl.Popup({
+        closeButton: false
+        // closeOnClick: false
+    });
     
-    //  map.on("mouseleave", "chicago", function() {
-    //     map.setFilter("neighborhood-fills-hover", ["==", "PRI_NEIGH", ""]);
-    // });
+    if(map.getZoom() < 13) {
+        
+    $('#map1bottomBar').fadeOut();
+    }else{
+    $("#map1bottomBarBehind").remove();
+    $('#map1bottomBar').fadeIn(); 
+
+    }
+    
+    
+// $(".mapboxgl-popup-content").attr('id',"tooltipCheck");    
+    map.on("mousemove", "chicago", function(e) {
+        map.getCanvas().style.cursor = 'pointer';
+        
+        
+        
+        var features = map.queryRenderedFeatures(e.point, { layers: ['chicago'] });
+        map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+        
+        if (!features.length) {
+            popup.remove();
+            return;
+        }
+        
+        
+        if(map.getZoom() < 13){
+            
+        $('#map1bottomBar').fadeOut();    
+        popup.setLngLat(e.lngLat)
+            .setText(e.features[0].properties.PRI_NEIGH)
+            .addTo(map);
+        
+        map.setFilter("neighborhood-fills-hover", ["==", "PRI_NEIGH", e.features[0].properties.PRI_NEIGH]);
+        map.on("mouseleave", "chicago", function() {
+        map.setFilter("neighborhood-fills-hover", ["==", "PRI_NEIGH", ""]);
+        
+        // map.setFilter("neighborhood-fills-hover-other", ["==", "PRI_NEIGH", ""]);
+        
+        
+        // popup.remove();
+    });    
+            
+        }
+        
+        if(map.getZoom() >= 13){
+            
+            $("#map1bottomBarBehind").remove();
+            $('#map1bottomBar').fadeIn();
+            map.getCanvas().style.cursor = '';
+        // map.setFilter("neighborhood-fills-hover-other", ["!=", "PRI_NEIGH", e.features[0].properties.PRI_NEIGH]);
+        // map.on("mouseleave", "chicago", function() {
+        // map.setFilter("neighborhood-fills-hover-other", ["!=", "PRI_NEIGH", ""]);
+        // });
+        }
+        
+        // popup.setLngLat(e.features[0].geometry.coordinates[0][0][1])
+        //     .setHTML(e.features[0].properties.PRI_NEIGH)
+        //     .addTo(map);
+        
+    });
+    
+     
+    
+        map.on('click', "chicago", function (e) {
+           
+        map.flyTo({
+            center: e.lngLat,
+            zoom: 13,
+            pitch: 0,
+            speed: 1, // make the flying slow
+            // curve: 1,
+            easing: function (t) {
+            return t;
+            }
+        });
+        popup.remove();
+        map.getCanvas().style.cursor = '';
+        // $('#neighborhoodName').wodry();
+        
+        $("#neighborhoodName").text( e.features[0].properties.PRI_NEIGH )
+        
+        // var mapLabels = new mapboxgl.Map({
+        //     container: 'map', // container id
+        //     style: 'mapbox://styles/jainsambhav/cj2p0h07e001r2roafozo9c2s', //hosted style id
+        //     center: [-87.630000, 41.801832], // starting position
+        //     zoom: 11, // starting zoom
+        //     pitch: 30, // pitch in degrees
+        //     bearing: 60
+        // });
+    });
 });
 
 
