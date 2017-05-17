@@ -51,12 +51,13 @@ Mobility and Presence
 ---
 
 #### Exploring sex offender laws by state:
+(not included in final project) url: https://goo.gl/62Sv8G
 
 ![state laws](3.png? "state laws")
 ![state laws](4.png? "state laws")
 ![state laws](5.png? "state laws")
 
-(not included in final project) url: https://goo.gl/62Sv8G
+
 
 
 ---
