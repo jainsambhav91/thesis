@@ -124,7 +124,7 @@
         
         #map2bottomBarIcons{
         z-index: 10;
-        margin-top: 44%;
+        margin-top: 56%;
     
     }
     
@@ -225,10 +225,10 @@
             <p class="col-sm-12 col-md-12 text-center" > In <br> <span id="neighborhoodName"> Neighborhood </span></p>  
         </div>
         <div id="map1bottomBar02" class="col-sm-3 col-md-3 text-center map1bottomBar">
-           <p class="col-sm-12 col-md-12 text-center"> <span id="resPercent"> 34 </span>% <br>of <b>residential</b> land-use area</p> 
+           <p class="col-sm-12 col-md-12 text-center"> <span id="resPercent">34</span>% <br>of <b>residential</b> land-use area</p> 
         </div>
         <div id="map1bottomBar03" class="col-sm-3 col-md-3 text-center map1bottomBar">
-           <p class="col-sm-12 col-md-12 text-center"> and <span id="empPercent"> 60 </span>%<br> of <b>employment</b> land-use area</p>  
+           <p class="col-sm-12 col-md-12 text-center"> and <span id="empPercent">43</span>%<br> of <b>employment</b> land-use area</p>  
         </div>
         <div id="map1bottomBar04" class="col-sm-3 col-md-3 text-center map1bottomBar">
             <p class="col-sm-12 col-md-12 text-center"> is prohibited from <br> registered sex offenders.</p>  
@@ -511,6 +511,14 @@ map.on('load', function () {
         // $('#neighborhoodName').wodry();
         
         $("#neighborhoodName").text( e.features[0].properties.PRI_NEIGH )
+        
+        if(e.features[0].properties.PRI_NEIGH == "Hyde Park"){
+          $("#resPercent").text("84");  
+          $("#empPercent").text("60");
+        }else{
+          $("#resPercent").text("34");  
+          $("#empPercent").text("43");  
+        }
         
         // var mapLabels = new mapboxgl.Map({
         //     container: 'map', // container id
