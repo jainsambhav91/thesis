@@ -48,6 +48,8 @@ Represetative Images:
 Exploring sex offender laws by state:
 
 ![state laws](3.png? "state laws")
+![state laws](4.png? "state laws")
+![state laws](5.png? "state laws")
 https://goo.gl/62Sv8G
 
 
