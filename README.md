@@ -37,64 +37,43 @@ Mobility and Presence
 
 ---
 
-Represetative Images:
+### Represetative Images:
 
 
 ![Alt text](1.png?raw=true "Residence and Employment Restrictions")
 
 ![Alt text](2.png?raw=true "Mobility and Presence Restrictions")
 
+---
 
-Exploring sex offender laws by state:
+#### Exploring sex offender laws by state:
 
 ![state laws](3.png? "state laws")
 ![state laws](4.png? "state laws")
 ![state laws](5.png? "state laws")
-https://goo.gl/62Sv8G
+
+url: https://goo.gl/62Sv8G
 
 
+---
 
+### Data Sources
 
 <!--prototype:-->
 <!--![Alt text](visualization/nationalLevelPrototype.jpg?raw=true "National Level Prototype")-->
 
-Data Sources:
-* https://www.parentsformeganslaw.org/public/meganReportCard.html
-* http://all4consolaws.org/wp-content/uploads/2017/01/Summary-of-State-Registration-Laws-Concerning-Short.pdf
+National Level Data:
+* Registered sex offenders by state (timeline): https://www.parentsformeganslaw.org/public/meganReportCard.html
+* Summary of sex offender laws by state: http://all4consolaws.org/wp-content/uploads/2017/01/Summary-of-State-Registration-Laws-Concerning-Short.pdf
 
-Data Sources:
-* https://www.isp.state.il.us/sor/
+State Level (Illinois): 
+* Illinois public sex offender registry: https://www.isp.state.il.us/sor/
 
+City Level (Chicago):
 
-### City Level
-Understanding the impact of collateral consequences: _Chicago_
-
-#### Residence restrictions
-*	What proportion of the city is inaccessible for registered offenders to _live_?
-    * Mapping schools, day care centers and public parks parcel data with 500 ft buffers
-    * Mapping the city of Chicago and representing the percentage of city area that is prohibited for the sex offenders to live
-* Mapping actual available area
-  * Mapping schools, day care centers and public parks parcel data with 500 ft buffers
-  * Mapping residential area parcels in the city of Chicago (excluding industrial, commerical, farmland, healthcare parcels)  and excluding the safety zones to analyse the actual resiential area that is accessible.
-
-#### Work Restrictions
-* What proportion of the city is inaccessible for registered offenders to _work_?
-  * Mapping schools, day care centers and public parks parcel data with 500 ft buffers
-  * Mapping employment and work area parcels in the city of Chicago and excluding the safety zones to analyse the actual area available to them for work
-  
-#### Presence Restrictions
-* To avoid the risk of not "loitering" around schools and public parks and violating the law, what areas become inaccessible for the _presence_ and _mobility_ of registered offenders?
-  * Mapping schools, day care centers and public parks parcel data with 500 ft buffers
-  * Mapping streets of Chicago and analysing the ones that fall under safety zones to understand inaccessability. 
-
-#### Other Impacts
-* To avoid the risk of not "loitering" around schools and public parks and violating the law, what other public ameneties become inaccessible to the registered offenders? 
-  * Mapping schools, day care centers and public parks parcel data with 500 ft buffers
-  * Mapping Hospitals and healthcare facilities parcel data and analysing the ones that fall under safety zones to understand inaccessability.
-
-
-
-
-Data Sources: https://datahub.cmap.illinois.gov/
-
+* Chicago Land-use classification data: https://datahub.cmap.illinois.gov/
+* Chicago neighborhood boundaries(parcel data available): https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Neighborhoods/9wp7-iasj
+* List of day care centers in Chicago (for scraping address and geocoding): http://childcarecenter.us/illinois/chicago_il_childcare?page=1
+* List of public parks in Chicago (parcel data available): https://data.cityofchicago.org/Parks-Recreation/Parks-Shapefiles/5msb-wbxn/data
+* List of schools in Chicago (for scraping address and gecoding): http://cps.edu/Schools/Elementary_schools/Pages/ElementaryIndex.aspx?Type=1&Filter=CPSSchoolGrade=Elementary%20school
 
