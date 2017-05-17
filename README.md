@@ -47,7 +47,7 @@ Represetative Images:
 
 Exploring sex offender laws by state:
 
-![Alt text](3.png?raw=true "Mobility and Presence Restrictions")
+![Alt text](3.png?raw=true "state laws")
 https://goo.gl/62Sv8G
 
 
