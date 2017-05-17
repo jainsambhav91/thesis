@@ -1,6 +1,10 @@
 # Visualizing Law
 ### Understanding the sex offender registry laws and their collateral consequences
 
+![preview](preview.png? "preview")
+
+---
+
 ### Abstract
 
 This thesis is about the visual exploration of the current sex offender registration and community notification laws in the United States. It is an attempt to understand how examining these laws and their impact on society from an objective lens can debunk myths and create awareness. It tries to explore the collateral consequences that these laws have, specifically the residence restrictions that are imposed on offenders, and raises questions about the effectiveness of their intentions. This work also aims to serve as a tool for lawmakers to visualize what the consequences of their actions might look like, and help them to preempt decisions that may not be in the best interest of society.
@@ -52,7 +56,7 @@ Mobility and Presence
 ![state laws](4.png? "state laws")
 ![state laws](5.png? "state laws")
 
-url: https://goo.gl/62Sv8G
+(not included in final project) url: https://goo.gl/62Sv8G
 
 
 ---
@@ -62,15 +66,16 @@ url: https://goo.gl/62Sv8G
 <!--prototype:-->
 <!--![Alt text](visualization/nationalLevelPrototype.jpg?raw=true "National Level Prototype")-->
 
-National Level Data:
+#### National Level Data:
 * Registered sex offenders by state (timeline): https://www.parentsformeganslaw.org/public/meganReportCard.html
 * Summary of sex offender laws by state: http://all4consolaws.org/wp-content/uploads/2017/01/Summary-of-State-Registration-Laws-Concerning-Short.pdf
 
-State Level (Illinois): 
+
+#### State Level (Illinois): 
 * Illinois public sex offender registry: https://www.isp.state.il.us/sor/
 
-City Level (Chicago):
 
+#### City Level (Chicago):
 * Chicago Land-use classification data: https://datahub.cmap.illinois.gov/
 * Chicago neighborhood boundaries(parcel data available): https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Neighborhoods/9wp7-iasj
 * List of day care centers in Chicago (for scraping address and geocoding): http://childcarecenter.us/illinois/chicago_il_childcare?page=1
