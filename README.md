@@ -37,40 +37,28 @@ Mobility and Presence
 
 ---
 
+Represetative Images:
+
+
+![Alt text](1.png?raw=true "Residence and Employment Restrictions")
+
+![Alt text](2.png?raw=true "Mobility and Presence Restrictions")
+
+
+Exploring sex offender laws by state:
+
+![Alt text](2.png?raw=true "Mobility and Presence Restrictions")
+https://goo.gl/62Sv8G
 
 
 
-prototype:
-![Alt text](visualization/nationalLevelPrototype.jpg?raw=true "National Level Prototype")
+
+<!--prototype:-->
+<!--![Alt text](visualization/nationalLevelPrototype.jpg?raw=true "National Level Prototype")-->
 
 Data Sources:
 * https://www.parentsformeganslaw.org/public/meganReportCard.html
 * http://all4consolaws.org/wp-content/uploads/2017/01/Summary-of-State-Registration-Laws-Concerning-Short.pdf
-
-
-
-### State Level:
-Understanding the demographics of the registrants: _State of Illinois_
-*	What proportion of registered offenders are females?
-*	What proportion of registered offenders are juveniles?
-*	Which ethnicities have a higher chance of convictions?
-*	Are all victims children? What proportion are adults?
-*	How are offenders categorized by risk of re-offense?
-
-
-Variables to be visualized:
-Distribution by:
-*	Age
-*	Gender
-*	Ethnicity
-*	Victim Age
-*	Type of Crime
-
-
-
-
-prototype:
-![Alt text](visualization/stateLevelPrototype.png?raw=true "State Level Prototype")
 
 Data Sources:
 * https://www.isp.state.il.us/sor/
@@ -103,17 +91,6 @@ Understanding the impact of collateral consequences: _Chicago_
   * Mapping Hospitals and healthcare facilities parcel data and analysing the ones that fall under safety zones to understand inaccessability.
 
 
-
-
-prototype:
-
-![Alt text](visualization/Untitled-1.png?raw=true "City Level Prototype")
-
-![Alt text](visualization/Untitled-2.png?raw=true "City Level Prototype")
-
-![Alt text](visualization/Untitled-3.png?raw=true "City Level Prototype")
-
-![Alt text](visualization/Untitled-4.png?raw=true "City Level Prototype")
 
 
 Data Sources: https://datahub.cmap.illinois.gov/
