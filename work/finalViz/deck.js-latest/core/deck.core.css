@@ -5,21 +5,22 @@ html, body {
 }
 
 .deck-container {
-  position: relative;
-  min-height: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-  overflow-y: auto;
+  /*position: relative;*/
+  /*min-height: 100%;*/
+  /*margin: 0 auto;*/
+  /*overflow: hidden;*/
+  /*overflow-y: auto;*/
 }
 .js .deck-container {
   visibility: hidden;
+  text-align: center
 }
 .ready .deck-container {
   visibility: visible;
 }
 .touch .deck-container {
-  -webkit-text-size-adjust: none;
-  -moz-text-size-adjust: none;
+  /*-webkit-text-size-adjust: none;*/
+  /*-moz-text-size-adjust: none;*/
 }
 
 .deck-loading {
@@ -27,9 +28,9 @@ html, body {
 }
 
 .slide {
-  width: auto;
-  min-height: 100%;
-  position: relative;
+  /*width: auto;*/
+  /*min-height: 100%;*/
+  /*position: relative;*/
 }
 
 .deck-before, .deck-previous, .deck-next, .deck-after {

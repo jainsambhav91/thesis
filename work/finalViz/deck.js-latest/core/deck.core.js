@@ -80,6 +80,7 @@ that use the API provided by core.
     initialize: 'deck.init'
   };
 
+
   var options = {};
   var $document = $(document);
   var $window = $(window);
