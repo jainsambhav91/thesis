@@ -52,6 +52,14 @@
     
     
   }
+  
+  #vid2 {
+    width: 110%;
+    height: 100%;
+    margin-left: -5%;
+    
+    
+  }
             
 </style>
 
@@ -116,6 +124,14 @@
                Your browser does not support the video tag.
            </video>
     </section>
+    
+    <section class="slide">
+           <video preload="auto" id="vid2" autoplay >
+             <source src="viz2-final2.mp4" type="video/mp4" />
+             <source src="viz2-final2.ogg" type="video/ogg" />
+               Your browser does not support the video tag.
+           </video>
+    </section>
 
     <!-- End slides. -->
 
@@ -170,6 +186,12 @@ var vid = document.getElementById("vid");
          vid.pause();
          vid.currentTime = 0;
          vid.load();
+       }
+        if(to==13){
+         var vid2 = document.getElementById("vid2"); 
+         vid2.pause();
+         vid2.currentTime = 0;
+         vid2.load();
        }
     });
   });
