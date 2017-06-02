@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Visualizing Law</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Chivo:300,400" rel="stylesheet">
+
+  <style>
+  body {
+      position: relative;
+      background-color: #efefef;
+  }
+  
+  #section1 {padding-top:120px;height:650px;color: #fff; background-color: #efefef; }
+  #section2 {padding-top:120px;height:700px;color: #fff; background-color: #efefef;}
+  #section3 {padding-top:120px;height:650px;color: #fff; background-color: #efefef;}
+  #section4 {padding-top:120px;height:650px;color: #fff; background-color: #efefef;}
+  #section5 {padding-top:120px;height:650px;color: #fff; background-color: #efefef;}
+  
+  /*.navbar-nav>li>a {*/
+  /*    padding-top: 15px;*/
+  /*    padding-bottom: 15px;*/
+  /*}*/
+  
+  .navbar {
+      background-color: #222222;
+  }
+  .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+      /*margin-top: 10px;*/
+      color: #ff3838;
+      background-color: #efefef;
+      /*border-style: solid;*/
+      /*border-color: #efefef;*/
+  }
+  
+  .navbar-inverse {
+      border-color: #efefef;
+  }
+  
+  .topButtons { font-family: 'Chivo', sans-serif; font-weight:400;}
+  #title {font-family: 'Libre Baskerville', serif; color: #cf4647;}
+  #subTitle { font-family: 'Chivo', sans-serif; font-weight:400; color: #222222; padding-bottom: 10px;}
+  #underline{ color: #222222;}
+  p {
+      font-family: 'Libre Baskerville', serif; color: #222222;
+      /*font-size: 105%;*/
+  }
+  h4 {
+      font-family: 'Libre Baskerville', serif; color: #222222;
+  }
+  
+  #vizHeading {
+    font-family: 'Chivo', sans-serif; font-weight:400; color: #222222; 
+  }
+  
+  .vizButton{
+    background-color: #222222;
+    border: none;
+    padding: 10px 20px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 2px;
+  }
+  
+  .vizButton:hover{
+    background-color: black;
+    
+  }
+  
+  #resnempButton{font-family: 'Chivo', sans-serif; font-weight:400; color: #d8d8d8; font-size: 80%; padding: 10px 20px;}
+  #mobnpreButton{font-family: 'Chivo', sans-serif; font-weight:400; color: #d8d8d8; font-size: 80%; padding: 10px 20px;}
+  
+  #resnempButton:hover, #resnempButton:active, #resnempButton:focus{ 
+    color: white;
+    text-decoration: none;
+  }
+  #mobnpreButton:hover, #mobnpreButton:active, #mobnpreButton:focus{ 
+    color: white;
+    text-decoration: none;
+  }
+  .btn-info {
+    color: #cf4647;
+    background-color: #efefef;
+    border-color: #efefef;
+    font-size: 80%;
+    margin: 0px;
+    padding: 0px;
+    font-weight:700;
+    }
+   .btn-info:hover {
+    background-color: #efefef; 
+    color: #ff3838;
+    border-color: #efefef;
+    font-size: 80%;
+    font-weight:700;
+   }
+   .btn-info:focus {
+    background-color: #efefef; 
+    color: #ff3838;
+    border-color: #efefef;
+    font-size: 80%;
+    font-weight:700;
+   }
+
+    .btn-info:hover:active {
+    background-color: #efefef; 
+    color: #ff3838;
+    border-color: #efefef; 
+    box-shadow: 0px 0px 0px ;
+    font-size: 80%;
+    font-weight:700;
+    } 
+    
+    .colList{
+       font-family: 'Libre Baskerville', serif; color: #222222; 
+    }
+    .dataList{
+      font-family: 'Libre Baskerville', serif; color: #222222;
+    }
+    
+    .click{
+      font-family: 'Chivo', sans-serif;
+    }
+    
+    a {
+      /*color: #222222;*/
+    }
+    
+    h4, h3{
+      font-family: 'Chivo', sans-serif; color: #222222;
+    }
+    
+  </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+
+
+<div class="col-sm-2 col-md-2 "></div>
+<div class="col-sm-8 col-md-8 ">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="col-sm-2 col-md-2 "></div>
+        <div class="col-sm-8 col-md-8 ">
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                  <li><a href="#section1" class="topButtons">Home</a></li>
+                  <li><a href="#section2" class="topButtons">Background</a></li>
+                  <li><a href="#section3" class="topButtons">Visualization</a></li>
+                  <li><a href="#section4" class="topButtons">Data Sources</a><li>
+                  <li><a href="#section5" class="topButtons">Contact</a><li>      
+                </ul>
+              </div>
+        </div>
+        <div class="col-sm-2 col-md-2 "></div>
+      </div>
+    </nav>    
+    
+    <div id="section1" class="container-fluid">
+      <h1 id="title">Visualizing Law</h1>
+      <h3 id="subTitle">Understanding the sex offender registry laws<br> and their collateral consequences</h3>
+      
+      <h2 id="underline">____</h2>
+     
+      <p>This project examines the impact of the current <a href="https://en.wikipedia.org/wiki/Sex_offender_registry#United_States" target="_blank">sex offender registration and community      notification laws</a> in <b>Chicago</b>. It tries to explore the collateral consequences that these laws have, specifically the residence restrictions that are imposed on offenders, and raises questions about the effectiveness of their intentions. This work aims to serve as a tool for lawmakers, to understand what the consequences of their actions might translate into, and help them make informed decisions with empirical evidence. It is also an attempt, for us to understand, how examining these laws and their impact on society from an objective lens can debunk myths and create awareness.
+      </p>
+    </div>
+    <div id="section2" class="container-fluid">
+      <!--<h1>Section 2</h1>-->
+      <p>The current registry laws in different states require former offenders to be a part of the online public sex offender registries and prohibits them from living anywhere within <b>500-2500 feet</b> distance from schools, public parks, day care centers, and other places that cater to children under 18. The duration in the registry ranges from <b>2 years to a lifetime.</b></p>
+      <p> <b>In Illinois,</b> the safety zone is <b>500 feet</b>. Moreover, a registered offender may not <b>"loiter"</b> within 500 feet of a school building or a public park. </p>
+      <p>However, studies have shown that in many cases, these legal decisions are not based on scientific evidence, but are backed up by assumptions that are false and based on emotional response to violent cases and media hype.</p>
+      <p class="btn btn-info" data-toggle="collapse" data-target="#demo">read more.</p>
+      <div id="demo" class="collapse">
+          <br>
+        <div class="col-sm-8 col-md-8 "> 
+        <p>
+            On adding a 500 feet buffer to all schools, public parks and day care centers in the city of Chicago, it was found that <b>43%</b> of the city remains out of bounds to registered offenders. Also, these restrictions not only have housing implications but also lead to many other collateral consequences. For instance,
+            <ul class="colList">
+                <li>Many registered offenders end up in life imprisonment if they cannot find a place to live.</li>
+                <li>One cannot find employment in commercial spaces that are a part of the restriction zones.</li>
+                <li>
+                    They are always at risk of violating these laws even in their movement from one place to the other.
+                </li>
+                <li>
+                  Many of the non-restricted areas may still not be accessible for housing or employment, for example because they are industrial areas.
+                </li>
+            </ul>
+        </p>
+        </div>
+        
+        <div class="col-sm-4 col-md-4 ">
+            <img src="chicago43.png" width="100%">
+        </div>  
+        
+      </div>
+    </div>
+    <div id="section3" class="container-fluid ">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 ">
+          <h3 id="vizHeading">  There are 2 parts to this visualization project:</h3>
+          <br> 
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-md-6 ">
+          <p>The first part tries to explore the impact of these laws specifically on <b><u>housing</u></b> and <b><u>employment</u>.</b> The user can understand the extent of these restrictions across different neighborhoods in Chicago to examine whether some neighborhoods are more accessible than others, or whether all neighborhoods are equally inaccessible.<br>
+          <br>
+          <span class="click">CLICK</span> the button below to explore.</p>
+          <br><br><br><br><br>
+        </div>
+        <div class="col-sm-6 col-md-6 ">
+          <p>The second part tries to explore the impact of these laws on <b><u>mobility</u></b> and <b><u>presence</u>.</b> The user can understand how these laws would affect the movement of a person, who seeks to comly with the law, when they want to travel from point A to point B within the city of Chicago.<br><br> <span class="click">CLICK</span>  the button below to explore.</p>
+          <br><br><br><br><br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-md-6">
+          <button  class="vizButton"><a id="resnempButton" href="../../work/chicago/_02April29.html" target="_blank">RESIDENCE AND EMPLOYMENT RESTRICTIONS</a></button>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <button class="vizButton"><a id="mobnpreButton" href="../../work/chicago/_01April14.html" target="_blank">MOBILITY AND PRESENCE RESTRICTIONS</a></button>
+        </div>
+      </div>
+    </div>
+    <div id="section4" class="container-fluid">
+      <h4> National Level Data: </h4>
+      <ul class="dataList">
+      <li>Registered sex offenders by state (timeline): <a href="https://www.parentsformeganslaw.org/public/meganReportCard.html">Parents for Megan's Law and The Crime Victims Center.</a>
+      </li>
+      <li>Summary of sex offender laws by state: <a href="http://all4consolaws.org/wp-content/uploads/2017/01/Summary-of-State-Registration-Laws-Concerning-Short.pdf">Summary of State Registration Laws Concerning Temporary and Permanent Residency by Adults</a>
+      </li>
+      </ul>
+      <br>
+      
+      <h4>State Level (Illinois):</h4>
+      <ul class="dataList">
+        <li>
+          <a href="https://www.isp.state.il.us/sor/">Illinois public sex offender registry</a>
+        </li>
+      </ul>
+      <br>
+      
+      <h4>City Level (Chicago):</h4>
+      <ul class="dataList">
+        <li><a href="https://datahub.cmap.illinois.gov/">Chicago Land-use classification data</a></li>
+        <li><a href="https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Neighborhoods/9wp7-iasj">Chicago neighborhood boundaries</a> (parcel data available)</li>
+        <li><a href="http://childcarecenter.us/illinois/chicago_il_childcare?page=1">List of day care centers in Chicago</a> (for scraping address and geocoding)</li>
+        <li><a href="https://data.cityofchicago.org/Parks-Recreation/Parks-Shapefiles/5msb-wbxn/data">List of public parks in Chicago</a> (parcel data available)</li>
+        <li><a href="http://cps.edu/Schools/Elementary_schools/Pages/ElementaryIndex.aspx?Type=1&Filter      =CPSSchoolGrade=Elementary%20school">List of schools in Chicago</a> (for scraping address and geocoding)</li>
+      </ul>
+      <br>
+
+    </div>
+    <div id="section5" class="container-fluid">
+      
+      <br><br><br><br><br><br>
+      <h3>___</h3>
+      <p>jain.sambhav91@gmail.com</p>
+      <p><a href="https://www.sambhav-jain.com">sambhav-jain.com</a></p>
+      
+    </div>
+</div>
+<div class="col-sm-2 col-md-2 "></div>
+
+
+
+
+</body>
+
+
+<script>
+  
+</script>
+
+
+</html>
