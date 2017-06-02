@@ -19,8 +19,7 @@ https://jainsambhav91.github.io/thesis/work/finalViz/
 
 ### Project URL:
 
-* Residence and Employment Restrictions: https://goo.gl/DDfj6O
-* Mobility and Presence Restrictions: https://goo.gl/3xphT6
+https://jainsambhav91.github.io/thesis/visualization/website/
 
 ---
 
